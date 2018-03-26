@@ -1,3 +1,5 @@
+![alt text](photo/WildBook.png)
+
 # WildBook
 
 Créer un réseau social pour mettre en relation les anciens comme les nouveaux élèves de la Wild Code School.  
