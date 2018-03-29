@@ -1,0 +1,19 @@
+{
+  "name": "wildbook-server",
+  "version": "1.0.0",
+  "description": "The backend for our WildBook app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WildCodeSchool/paris-0218-wild-book.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WildCodeSchool/paris-0218-wild-book/issues"
+  },
+  "homepage": "https://github.com/WildCodeSchool/paris-0218-wild-book#readme"
+}
