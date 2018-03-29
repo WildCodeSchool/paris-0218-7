@@ -13,12 +13,16 @@ const allAlumnis = [
 	alumni5
 ]
 
-console.log(allAlumnis)
+
 
 const app = express()
 
 app.get('/', (request, response) => {
 	response.end('ok')
+})
+
+app.get('/alumnis', (request, response) => {
+	response.json(allAlumnis)
 })
 
 app.listen(3248, () => console.log('J\'écoute sur le port 3248'))
