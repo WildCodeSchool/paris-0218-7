@@ -1,8 +1,9 @@
-const http = require('http')
+const express = require('express')
 
-const server = http .createServer((request, response) => {
-	console.log('J\'ai une requete', request.url)
-	response.end('OK')
+const app = express()
+
+app.get('/', (request, response) => {
+	response.end('ok')
 })
 
-server.listen(3248, () => console.log('J\'écoute sur le port 3248'))
+app.listen(3248, () => console.log('J\'écoute sur le port 3248'))
