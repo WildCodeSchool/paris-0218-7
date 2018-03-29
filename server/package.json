@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/WildCodeSchool/paris-0218-wild-book/issues"
   },
-  "homepage": "https://github.com/WildCodeSchool/paris-0218-wild-book#readme"
+  "homepage": "https://github.com/WildCodeSchool/paris-0218-wild-book#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
