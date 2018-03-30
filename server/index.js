@@ -10,7 +10,7 @@ const allAlumnis = [
 	alumni2,
 	alumni3,
 	alumni4,
-	alumni5
+	alumni5,
 ]
 
 console.log(allAlumnis)
