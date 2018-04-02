@@ -1,8 +1,12 @@
+
 const _calculateAge = (birthday) =>{ // birthday is a date
     var ageDifMs = Date.now() - birthday.getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
+
+
+
 
 
 
@@ -30,12 +34,15 @@ const showAlumnis = (alumni) => {
 	const img = new Image();	
 	img.src = alumni.img
 		return `
+		<a href="profile.html" id="lien">
 		<div class="liste_alumnis">
 			<img src="${alumni.img}" id="image">
 			<h4 id="prenom">${alumni.firstName} ${alumni.lastName}</h4>
 			<p id="birthday">${_calculateAge(birth)} ans</p>
 			<p id="campus">Campus: ${alumni.campus}</p>
-		</div>`
+		</div>
+		</a>
+		`
 }
 
 
@@ -51,4 +58,19 @@ fetch('http://localhost:3248/alumnis')
 		nbElement.innerHTML = (`
 				<p>${personne.length} membres correspondent à votre recherche</p>
 			`)
+		console.log(personne)
 	})
+
+
+document.querySelector('#lien').addEventListener('click',  function (e) {
+	e.preventDefault()
+	console.log(e.currentTarget)
+})
+
+
+
+
+
+
+
+

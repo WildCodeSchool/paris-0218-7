@@ -63,6 +63,8 @@ console.log(allAlumnis)
 
 const app = express()
 
+app.use(express.static('public'))
+
 app.use((request, response, next) => {
 	response.header('Access-Control-Allow-Origin', '*')
 	response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
