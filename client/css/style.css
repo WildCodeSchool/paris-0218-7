@@ -1,12 +1,31 @@
 .side_barre{
-	height:  100px;
-	background-color:  #1A237E;
+	height:  90px;
+	background-color:  #FD9208;
 	color: white;
+
+
 }
+
+.blok_logo{
+	margin-left: 50px;
+	width:  500px;
+	display: flex;
+	justify-content: space-between;
+	vertical-align: middle;
+}
+
+#logo{
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 80px;
+	width: 80px;
+}
+
 
 h1{
 	padding-top:  20px;
-	margin-left: 50px;
+	width: 400px;
+	/* margin-left: 50px; */
 }
 
 #block_alumnis{
@@ -17,7 +36,7 @@ h1{
 }
 
 .liste_alumnis{
-	background-color: #3F51B5;
+	background-color: #FD9208;
 	text-align: center;
 	color: white;
 	width: 200px;
@@ -44,3 +63,4 @@ h1{
 	margin-bottom: 0px;
 	color: black;
 }
+
