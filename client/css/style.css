@@ -38,3 +38,9 @@ h1{
 	height: 100px;
 	border-radius:  50px;
 }
+
+#nb_alumni{
+	padding-top: 20px;
+	margin-bottom: 0px;
+	color: black;
+}
