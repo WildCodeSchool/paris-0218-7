@@ -75,6 +75,14 @@ app.get('/', (request, response) => {
 	response.end('ok')
 })
 
+//recherche de ID pour afficher le détail d'un Alumni
+app.get('/alumnis/:id', (request, response) => {
+	//const id = request.params.id
+	response.send(`Je suis d\'utilisateur ${request.params.id}`)
+	// console.log(found)
+	// response.json()
+})
+
 app.get('/alumnis', (request, response) => {
 	response.json(allAlumnis)
 })
