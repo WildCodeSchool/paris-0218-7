@@ -3,7 +3,12 @@
 	"firstName" : "Mohand",
 	"lastName" : "Hassam",
 	"birthDate" : "1982,08,02",
-	"campus" : "Paris",
-	"img": "img/brad.jpg"
+	"img": "img/brad.jpg",
+	"campus": "Paris",
+	"dateSession": "Février 2018",
+	"specialization": "Javascript",
+	"decriptionSentence": "Je suis Javascript",
+	"language": "Anglais, Espagnol",
+	"passions": "Football"
 }
 

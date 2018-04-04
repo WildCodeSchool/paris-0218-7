@@ -4,5 +4,10 @@
 	"lastName" : "de Laage",
 	"birthDate" : "1979/11/29",
 	"campus" : "Bordeaux",
-	"img": "img/edouard.jpg"
+	"img": "img/edouard.jpg",
+	"dateSession": "Février 2017",
+	"specialization": "Ruby",
+	"decriptionSentence": "Je suis Ruby",
+	"language": "Anglais",
+	"passions": "Informatique"
 }

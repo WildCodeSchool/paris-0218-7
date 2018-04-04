@@ -4,5 +4,10 @@
 	"lastName" : "Chauleau",
 	"birthDate" : "1968/07/14",
 	"campus" : "Paris",
-	"img": "img/antoine.jpg"
+	"img": "img/antoine.jpg",
+	"dateSession": "Février 2016",
+	"specialization": "React",
+	"decriptionSentence": "Je suis React",
+	"language": "Arabe",
+	"passions": "Jeux vidéo"
 }

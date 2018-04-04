@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 	<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style_profile.css">
 	<meta charset="utf-8">
 	<title>WildBook</title>
 </head>
@@ -22,10 +23,18 @@
 		</div>
 	</header>
 
-	<div id="block_alumnis"></div>
+	<div class="container test">
+		<div class="row">
+			<!-- To view the profile summary / top left -->
+			<div id="block_starter" class="column column-20 block_starter"></div>
+			<!-- To view the profile détail / top right (Sentence description / age / language) -->
+			<div id="block_details" class="column column-50 column-offset-20 block_details"></div>
+
+		</div>
+	</div>
 
 	
-	<div id="alumnis"></div>
+	
 
 	<script type="module" src="/js/profile.js"></script>
 </body>

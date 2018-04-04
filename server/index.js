@@ -75,15 +75,17 @@ app.get('/', (request, response) => {
 	response.end('ok')
 })
 
-//recherche de ID pour afficher le détail d'un Alumni
+//Find de ID for display the profile detail 
 app.get('/alumnis/:id', (request, response) => {
 	const id = Number(request.params.id)
 	response.json(allAlumnis.find(alumni => alumni.id === id))
 
 })
 
+//For display all alumnis on index.html page
 app.get('/alumnis', (request, response) => {
 	response.json(allAlumnis)
+
 })
 
 app.listen(3248, () => console.log('J\'écoute sur le port 3248'))

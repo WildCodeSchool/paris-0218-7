@@ -4,5 +4,10 @@
 	"lastName" : "Chiffert",
 	"birthDate" : "1985/01/18",
 	"campus" : "Marseille",
-	"img": "img/sichelle.jpg"
+	"img": "img/sichelle.jpg",
+	"dateSession": "Septembre 2016",
+	"specialization": "Android",
+	"decriptionSentence": "Je suis Android",
+	"language": "Japonnais, Anglais",
+	"passions": "Art"
 }
