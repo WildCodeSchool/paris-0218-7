@@ -75,7 +75,7 @@ app.get('/', (request, response) => {
 	response.end('ok')
 })
 
-//Find de ID for display the profile detail 
+//Find the ID for display the profile detail 
 app.get('/alumnis/:id', (request, response) => {
 	const id = Number(request.params.id)
 	response.json(allAlumnis.find(alumni => alumni.id === id))
