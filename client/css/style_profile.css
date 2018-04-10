@@ -1,0 +1,25 @@
+.block_starter{
+	border: solid red 1px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.name{
+	font-size: 2em;
+}
+
+.block_details{
+	border: solid red 1px;
+	margin-top: 50px;	
+}
+
+.test{
+	border: solid green 1px;
+}
+
+.decriptionSentence{
+	text-align: center;
+	border: solid blue 1px;
+	font-size: 2em;
+
+}

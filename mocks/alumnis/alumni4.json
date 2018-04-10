@@ -1,6 +1,13 @@
 {
+	"id": 4,
 	"firstName" : "Sichelle",
 	"lastName" : "Chiffert",
 	"birthDate" : "1985/01/18",
-	"campus" : "Paris"
+	"campus" : "Marseille",
+	"img": "img/sichelle.jpg",
+	"dateSession": "Septembre 2016",
+	"specialization": "Android",
+	"decriptionSentence": "Je suis Android",
+	"language": "Japonnais, Anglais",
+	"passions": "Art"
 }
