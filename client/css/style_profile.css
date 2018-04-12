@@ -1,25 +1,61 @@
 .block_starter{
-	border: solid red 1px;
+	
 	text-align: center;
 	margin-top: 50px;
+	background-color: white;
+	opacity:0.8;
+	border-radius: 18px;
+	width: 1000px;
+
 }
+
+
 
 .name{
 	font-size: 2em;
+	margin-left:15px;
+	
 }
 
 .block_details{
-	border: solid red 1px;
+	
 	margin-top: 50px;	
+	background-color: white;
+	opacity: 0.8;
 }
 
 .test{
-	border: solid green 1px;
+	margin-top: 100px;
+	background-color: white;
+	opacity:0.9;
+	width:50%;
+	border-radius: 18px;
+	padding-bottom: 15px;
 }
 
 .decriptionSentence{
 	text-align: center;
-	border: solid blue 1px;
-	font-size: 2em;
 
+}
+
+#block_details, .birthday, .langue #hobby{
+	text-align: center;
+	font-weight: bold;
+}
+
+
+
+#block_details .spe{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#block_details .session{
+	font-weight: bold;
+}
+
+#block_starter img {
+    max-width: 250px;
+	margin-left: 15px;
+	margin-bottom: 30px;
 }
