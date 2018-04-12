@@ -1,6 +1,10 @@
 const express = require('express')
 const fs = require('fs')
+const util = require('util')
 const path = require('path')
+
+const readFile = util.promisify(fs.readFile)
+
 
 const alumni1 = require('../mocks/alumnis/alumni1.json')
 const alumni2 = require('../mocks/alumnis/alumni2.json')
@@ -41,18 +45,32 @@ app.get('/alumnis/:id', (request, response) => {
 	// Build the file path
 	const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
 	console.log(filePath)
-	// Read the file path
-	fs.readFile(filePath, 'utf-8', (err, data) => {
-		if (err) {
-			return response.status(404).end('Alumni n\'existe pas ;-))))')
-		}
-		response.header('Content-Type', 'application/json; charset=utf-8')
-		response.end(data)
-	})	
+	// COMMENT : Read the file path with the promise methode
+	readFile(filePath)
+		.then(data => {
+			response.header('Content-Type', 'application/json; charset=utf-8')
+			response.end(data)
+		})
+		.catch(err => {
+			response.status(404)
+			response.end('Alumni n\'existe pas ;-))))')
+		})
+	})
+	// COMMEMNT : Read the file path
+	// fs.readFile(filePath, 'utf-8', (err, data) => {
+	// 	if (err) {
+	// 		return response.status(404).end('Alumni n\'existe pas ;-))))')
+	// 	}
+	// 	response.header('Content-Type', 'application/json; charset=utf-8')
+	// 	response.end(data)
+	// })	
+	//
+	//
+	// COMMENT : Read the data with require and the id params
 	// const id = Number(request.params.id)
 	// const alumni = allAlumnis.find(alumni => alumni.id === id)
 	// response.json(alumni)
-})
+
 
 
 //For display all alumnis on index.html page with require at th etop of this page

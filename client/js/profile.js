@@ -30,12 +30,9 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 				<p>Langues: ${id.language}</p>
 				<p>Mes passions : ${id.passions}</p>
 			`)
-
-
-
-
-
-
-		
+	})
+	.catch(err => {
+		const errorElement = document.getElementById('block_starter')
+		errorElement.innerHTML = `Ce membre n'existe pas`
 	})
 	
