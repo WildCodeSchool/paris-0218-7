@@ -6,15 +6,12 @@
 	opacity:0.8;
 	border-radius: 18px;
 	width: 1000px;
-
 }
-
 
 
 .name{
 	font-size: 2em;
 	margin-left:15px;
-	
 }
 
 .block_details{
@@ -35,7 +32,6 @@
 
 .decriptionSentence{
 	text-align: center;
-
 }
 
 #block_details, .birthday, .langue #hobby{
@@ -46,12 +42,19 @@
 
 
 #block_details .spe{
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: bold;
+	margin-top: 8px;
 }
 
-#block_details .session{
+#block_details .session, .decriptionSentence{
 	font-weight: bold;
+	font-size: 20px;
+}
+
+#block_details.decriptionSentence{
+	font-weight: bold;
+	font-size: 15px;
 }
 
 #block_starter img {
