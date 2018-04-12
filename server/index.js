@@ -35,17 +35,19 @@ app.get('/', (request, response) => {
 
 //Find the ID for display the profile detail with read file 
 app.get('/alumnis/:id', (request, response) => {
+	// Build the file name with id in params
 	const fileName = `alumni${request.params.id}.json`
-	// console.log({ fileName })
+	console.log(fileName)
+	// Build the file path
 	const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
-	// console.log({ filePath })
+	console.log(filePath)
+	// Read the file path
 	fs.readFile(filePath, 'utf-8', (err, data) => {
 		if (err) {
 			return response.status(404).end('Alumni n\'existe pas ;-))))')
 		}
 		response.header('Content-Type', 'application/json; charset=utf-8')
 		response.end(data)
-		// response.json(data)
 	})	
 	// const id = Number(request.params.id)
 	// const alumni = allAlumnis.find(alumni => alumni.id === id)
