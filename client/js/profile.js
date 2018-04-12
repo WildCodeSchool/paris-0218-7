@@ -18,17 +18,20 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 		nameElement.innerHTML = (`
 				<img src="${id.img}" id="profile.picture">
 				<p class="name">${id.firstName} ${id.lastName}</p>
-				<p>Session : ${id.campus} / ${id.dateSession}</p>
-				<p>Specialisation : ${id.specialization}</p>
+
+
+				
 			`)
 		const birth = new Date(id.birthDate)
 	
 		const detailsElement = document.getElementById('block_details')
 		detailsElement.innerHTML = (`
-				<p class="decriptionSentence">${id.decriptionSentence}</p>
+				<p class="spe">Spécialisation : ${id.specialization}</p>
+				<p class= "session">Session : ${id.campus} / ${id.dateSession}</p>	
 				<p id="birthday">${_calculateAge(birth)} ans</p>
-				<p>Langues: ${id.language}</p>
-				<p>Mes passions : ${id.passions}</p>
+				<p class="decriptionSentence">${id.decriptionSentence}</p>
+				<p class= "langue">Langues: ${id.language}</p>
+				<p class="hobby">Mes passions : ${id.passions}</p>
 			`)
 
 
