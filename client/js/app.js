@@ -12,9 +12,3 @@ fetch('http://localhost:3248/alumnis')
       <p>${personne.length} membres correspondent à votre recherche</p>
     `
   })
-
-
-
-
-
-
