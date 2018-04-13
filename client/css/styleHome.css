@@ -2,7 +2,7 @@ html {
     box-sizing: border-box;
     font-size: 62.5%;
     background-image: url('forest.jpeg');
-    
+
 }
 
 body {
@@ -12,11 +12,11 @@ body {
     font-weight: 300;
     letter-spacing: 0.01em;
     line-height: 1.6;
-  
+
 }
 
 
-.logo{
+.logo {
   margin-top: 40px;
   width:30%;
   opacity:0.8;
@@ -30,22 +30,22 @@ body {
       width:100px;
       }
 
-.container{
+.container {
   background-color: white;
   border-radius: 30px;
   opacity: 0.8;
   width:40%;
-  
+
 }
 
 
  .column {
   text-align: center;
- }    
-    
+ }
 
-h3{
-  
+
+h3 {
+
   text-align: center;
   color:#666d72;
   margin-bottom: 40px;
@@ -55,7 +55,7 @@ h3{
 
 
 
-form{
+form {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 65px;
@@ -63,7 +63,7 @@ form{
   font-size: 20px;
 }
 
-.button{
+.button {
   width:75%;
   background-color: #ef9607;
   border: black 1px solid;
@@ -73,11 +73,8 @@ form{
 }
 
 
-#nameField{
+#nameField {
   width:75%;
   margin-bottom: 30px;
   font-family: 'cooper black', sans-serif;
 }
-  
-
-
