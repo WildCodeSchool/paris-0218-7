@@ -11,11 +11,13 @@ export const showAlumnis = (alumni) => {
 		return `
 		<a href="profile.html?id=${alumni.id}" id="lien">
 		<div class="liste_alumnis">
+			
 			<img src="${alumni.img}" id="image">
 			<h4 id="prenom">${alumni.firstName} ${alumni.lastName}</h4>
-			<p id="birthday">${_calculateAge(birth)} ans</p>
 			<p id="campus">Campus: ${alumni.campus}</p>
 		</div>
 		</a>
 		`
 }
+
+// <p id="birthday">${_calculateAge(birth)} ans</p>
