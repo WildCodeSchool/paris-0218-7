@@ -1,0 +1,25 @@
+{
+  "name": "wildbook",
+  "version": "1.0.0",
+  "description": "![alt text](photo/WildBook.png)",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server --ignore client",
+    "client": "serve client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WildCodeSchool/paris-0218-wild-book.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WildCodeSchool/paris-0218-wild-book/issues"
+  },
+  "homepage": "https://github.com/WildCodeSchool/paris-0218-wild-book#readme",
+  "dependencies": {
+    "nodemon": "^1.17.2",
+    "serve": "^6.5.3"
+  }
+}

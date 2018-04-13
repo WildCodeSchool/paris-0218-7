@@ -1,0 +1,102 @@
+html {
+  background-image: url("http://iwallpapers.free.fr/upload/2016/02/23/20160223152449-7c10f1cf.jpg");
+}
+
+.side_barre {
+  height: 80px;
+  background-color: white;
+  color: black;
+  opacity:0.8;
+  margin-bottom:20px;
+}
+
+.blok_logo {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+
+#logo {
+  width: 40%;
+  height:40%;
+  margin-top: -5px;
+}
+
+
+.h1-titre {
+  text-align: center;
+  padding-top: 10px;
+  background-color: white;
+  opacity: 0.8;
+  font-size:30px;
+  color: black;
+  border-radius: 18px;
+}
+
+.h1 {
+  padding-top: 20px;
+  width: 400px;
+  /* margin-left: 50px; */
+}
+
+#block_alumnis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.liste_alumnis { 
+
+  text-align: center;
+  color: black;
+  width: 300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-radius: 150px;
+
+}
+
+#image {
+  padding-top: 10px;
+  padding-bottom:  10px;
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  opacity: 0.9;
+  margin-bottom: -18px;
+  
+}
+
+#nb_alumni {
+  margin-top: 2px;
+  padding-top: 6px;
+  margin-bottom: -50px;
+  color: black;
+  text-align: center;
+  background-color:white;
+  border-radius: 20px;
+  opacity: 0.8;
+  font-family: 10px;
+}
+
+
+.liste_alumnis h4 {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 0px;
+  margin-bottom:0px;
+  margin-top:0px;
+}
+
+.liste_alumnis #campus {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 0px;
+  margin-top: 0px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}

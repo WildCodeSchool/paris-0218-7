@@ -1,6 +1,14 @@
 {
+	"id": 1,
 	"firstName" : "Mohand",
 	"lastName" : "Hassam",
-	"birthDate" : "1982/08/30",
-	"campus" : "Paris"
+	"birthDate" : "1982,08,02",
+	"img": "img/brad.jpg",
+	"campus": "Paris",
+	"dateSession": "Février 2018",
+	"specialization": "Javascript",
+	"decriptionSentence": "Mon coté Wild: Je suis chanteur d'opéra amateur",
+	"language": "Anglais, Espagnol",
+	"passions": "Football"
 }
+
