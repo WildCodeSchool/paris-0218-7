@@ -6,9 +6,6 @@ const _calculateAge = (birthday) =>{ // birthday is a date
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-//console.log(search)
-
-
 fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
  	.then(response => response.json())
  	.then(id => {
@@ -30,12 +27,9 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 				<p>Langues: ${id.language}</p>
 				<p>Mes passions : ${id.passions}</p>
 			`)
-
-
-
-
-
-
-		
+	})
+	.catch(err => {
+		const errorElement = document.getElementById('block_starter')
+		errorElement.innerHTML = `Ce membre n'existe pas`
 	})
 	

@@ -1,65 +1,10 @@
 const express = require('express')
-const alumni1 = require('../mocks/alumnis/alumni1.json')
-const alumni2 = require('../mocks/alumnis/alumni2.json')
-const alumni3 = require('../mocks/alumnis/alumni3.json')
-const alumni4 = require('../mocks/alumnis/alumni4.json')
-const alumni5 = require('../mocks/alumnis/alumni5.json')
+const fs = require('fs')
+const util = require('util')
+const path = require('path')
 
-const allAlumnis = [
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5,
-	alumni1,
-	alumni2,
-	alumni3,
-	alumni4,
-	alumni5
-]
-
-console.log(allAlumnis)
-
+const readFile = util.promisify(fs.readFile)
+const readdir = util.promisify(fs.readdir)
 
 const app = express()
 
@@ -75,17 +20,45 @@ app.get('/', (request, response) => {
 	response.end('ok')
 })
 
-//Find the ID for display the profile detail 
-app.get('/alumnis/:id', (request, response) => {
-	const id = Number(request.params.id)
-	response.json(allAlumnis.find(alumni => alumni.id === id))
-
-})
-
-//For display all alumnis on index.html page
+//For display all alumnis on index.html with FS and promise
 app.get('/alumnis', (request, response) => {
-	response.json(allAlumnis)
+	const alumniDirr = (path.join(__dirname, '../mocks/alumnis'))
+	readdir(alumniDirr)
+		.then(files => {
+			const filePaths = files.map(file => path.join(alumniDirr, file))
+			const allFiles = filePaths.map(filePath => {
+				return readFile(filePath, 'utf-8') 
+			})
+			Promise.all(allFiles)
+				.then(allFilesValues => {
+				const valueInJason = allFilesValues.map(JSON.parse)
+				response.json(valueInJason)
+			})
+			.catch(err => {
+				response.status(500).end(err.message)
+			})
+		})
+	})
 
-})
+
+//Find the ID for display the profile detail with read file and
+app.get('/alumnis/:id', (request, response) => {
+	// Build the file name with id in params
+	const fileName = `alumni${request.params.id}.json`
+	console.log(fileName)
+	// Build the file path
+	const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+	console.log(filePath)
+	// COMMENT : Read the file path with the promise methode
+	readFile(filePath)
+		.then(data => {
+			response.header('Content-Type', 'application/json; charset=utf-8')
+			response.end(data)
+		})
+		.catch(err => {
+			response.status(404)
+			response.end('Alumni n\'existe pas ;-))))')
+		})
+	})
 
 app.listen(3248, () => console.log('J\'écoute sur le port 3248'))
