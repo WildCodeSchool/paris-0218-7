@@ -23,7 +23,6 @@ html {
   margin-top: -5px;
 }
 
-
 .h1-titre {
   text-align: center;
   padding-top: 10px;
@@ -48,7 +47,6 @@ html {
 }
 
 .liste_alumnis { 
-
   text-align: center;
   color: black;
   width: 300px;
@@ -56,7 +54,6 @@ html {
   padding-bottom: 5px;
   margin-bottom: 20px;
   border-radius: 150px;
-
 }
 
 #image {
@@ -68,7 +65,6 @@ html {
   border-top-right-radius: 25px;
   opacity: 0.9;
   margin-bottom: -18px;
-  
 }
 
 #nb_alumni {
@@ -82,7 +78,6 @@ html {
   opacity: 0.8;
   font-family: 10px;
 }
-
 
 .liste_alumnis h4 {
   background-color: white;
@@ -112,50 +107,43 @@ header{
   height: 90px;
   margin-bottom: 20px;
 }
+
 #menu {
   font-family: 'Roboto', sans-serif;
   padding-top: 1%;
   margin-right:-86px;
-
- }
-
+}
 
 #menu ul li {
- /* text-align: right;*/
   position: relative;
   display: inline-block;
   padding-left: 1em;
   margin-top: 35px;
-
 }
 
-#menu ul li a{
+#menu ul li a {
   text-transform: uppercase;
   color: #333;
   text-decoration: none;
 
 }
-#menu ul li a:hover{
+
+#menu ul li a:hover {
   color: orange;
 }
-#search{
-  margin-top: 16px;
-/*  margin-left: 85px;*/
 
+#search {
+  margin-top: 16px;
 }
 
-.mt{
+.mt {
   margin-top: 1em;
 }
-.title{
+
+.title {
   text-align: center;
 }
-/*.txt-right{
-  text-align: right;
-}*/
-.mr{
+
+.mr {
   margin-right: 2em;
 }
-
-
-
