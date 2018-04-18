@@ -19,7 +19,7 @@ app.use((request, response, next) => {
 })
 
 
-// Midelware of "Add data with post"
+// Middleware of "Add data with post"
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
   let accumulator = ''
@@ -50,7 +50,14 @@ app.post('/form', (request, response, next) => {
     firstName: request.body.prenom,
     lastName: request.body.nom,
     decriptionSentence: request.body.phrase,
-    createdAt: Date.now()
+    birthDate: request.body.anniversaire,
+    campus: request.body.ecole,
+    dateSession: request.body.session,
+    langage: request.body.langage,
+    passions: request.body.passions,
+    specialization: request.body.specialization,
+    coteWild: request.body.decriptionSentence
+    //createdAt: Date.now()
   }
   writeFile(filePath, JSON.stringify(content), 'utf8')
   .then(() => response.json('ok'))

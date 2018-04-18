@@ -2,8 +2,14 @@
 <html>
 <head>
   <title>Formulaire</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Yanone+Kaffeesatz" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 <body>
+  
+  <div class="container">
+  <!-- <h2>Create profile</h2> -->
+  <div id="champTextes">
   <form id="new_profile" action="index.html">
     <label>
       Prenom :
@@ -14,11 +20,41 @@
       <input type="text" name="lastName" id="lastName">
     </label>
     <label>
+      Date de naissance :
+      <input type="date" name="birthDate" id="birthDate">
+    </label>
+    <label>
+      Campus :
+      <input type="text" name="campus" id="campus">
+    </label>
+    <label>
+      Session :
+      <input type="text" name="dateSession" id="dateSession">
+    </label>
+    <label>
+      Langage :
+      <input type="textarea" name="langue" id="langue"></textarea>
+    </label>
+    <label>
+      Passions :
+      <input type="textarea" name="passion" id="passion"></textarea>
+    </label>
+     <label>
+      Spécialisation :
+      <input type="text" name="spec" id="spec">
+    </label>
+    <label>
       Mon côté wild :
       <input type="textarea" name="decriptionSentence" id="decriptionSentence"></textarea>
     </label>
-    <input type="submit" name="validate" value="Envoyer">
+    <label>
+      Send:
+    <input type="submit" name="validate" value="Envoyer" class="champTextes">
+    </label>
   </form>
+</div>
+</div>
   <script type="module" src="/js/form.js"></script>
+
 </body>
-</html>
+</html> 
