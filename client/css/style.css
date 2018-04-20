@@ -1,7 +1,8 @@
 html {
-  background-image: url("http://iwallpapers.free.fr/upload/2016/02/23/20160223152449-7c10f1cf.jpg");
 }
-
+body{
+  background-color: #eaeaea;
+}
 .side_barre {
   height: 80px;
   background-color: white;
@@ -96,22 +97,22 @@ html {
   border-bottom-right-radius: 25px;
 }
 
-/*NAV-BAR SICHELLE*/
+/*NAV-BAR*/
 
 #logo-header{
-  margin-left: -63px;
+  margin-left: -50px;
 }
 
 header{
   background-color: white;
-  height: 90px;
+  height: 120px;
   margin-bottom: 20px;
 }
 
 #menu {
   font-family: 'Roboto', sans-serif;
   padding-top: 1%;
-  margin-right:-86px;
+  margin-right:-100px;
 }
 
 #menu ul li {
@@ -147,3 +148,5 @@ header{
 .mr {
   margin-right: 2em;
 }
+
+
