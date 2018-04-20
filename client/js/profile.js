@@ -27,7 +27,7 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 
       <p id="birthday">Age : ${calculateAge(birth)} ans</p>
 
-      <p class= "langue">Langues: ${id.language}</p>
+      <p class= "langue">Langues: ${id.langage}</p>
       <p class="hobby">Mes passions : ${id.passions}</p>
     `
   })

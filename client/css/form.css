@@ -1,0 +1,137 @@
+
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing:border-box;
+}
+html {
+	font-size: 62.5%;
+}
+html,body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+body {
+	font-size: 1.6em;
+	color:#507ab5;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,ol {
+	list-style-type: none;
+}
+
+h1,h2,h3,h4 {
+	color: #37547d;
+}
+.container {
+	margin-top: 100px;
+}
+
+h2 {
+	font-size: 2.4em;
+	text-align: center;
+	line-height: 100px;
+	margin-bottom: 80px;
+	margin-top: -80px;
+}
+
+form {
+	width: 50%;
+	min-width: 780px;
+	left: 50%;
+	top: 50%;
+	padding: 2%;
+	margin:auto;
+	position: absolute;
+	left:16%;
+	background: #fff;
+	border-radius: 10px;
+	margin-bottom: 50px; /*para hacer un espacio despues de form*/ 
+	/*border: 2px solid black;*/
+}
+
+#champTextes {
+	display: inline-block;
+	width: 60%;
+	padding-right: 1%;
+	vertical-align: middle;
+}
+#champTextes input {
+	width: 100%;
+	line-height: 30px;
+	padding-left: 5px;
+	font-size: 1.1em;
+	box-shadow:inset 1px 1px 5px 0 rgba(0,0,0,0.4);
+	border-radius: 3px;
+	border: 1px #fff solid;
+	margin-bottom: 8px;
+}
+
+#champTextes select {
+	width: 100%;
+	line-height: 30px;
+	padding-left: 5px;
+	font-size: 1.1em;
+	box-shadow:inset 1px 1px 5px 0 rgba(0,0,0,0.4);
+	border-radius: 3px;
+	border: 1px #fff solid;
+	margin-bottom: 8px;
+}
+
+#champTextes input:focus,textarea:focus {
+	border-color: #829ec5;
+}
+
+#colonneD {
+	display: inline-block;
+	width: 40%;
+	padding-left: 1%;
+	vertical-align: middle;
+}
+
+form textarea {
+	max-width: 100%;
+	min-width: 100%;
+	max-height: 120px;
+	min-height: 120px;
+	padding-left: 5px;
+	font-size: 1.1em;
+	box-shadow:inset 1px 1px 5px 0 rgba(0,0,0,0.4);
+	border-radius: 3px;
+	border: 1px #fff solid;
+	margin-bottom: 10px;
+}
+
+#champTextes input[type="submit"] {
+	border-radius: 3px;
+	font-size: 1.3em;
+	text-align: center;
+	font-weight: bold;
+	background: #486a96; /* Old browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#486a96', endColorstr='#58648e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	color: #fff;
+	width: 50%;
+	margin: 0 25%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	line-height: 30px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#champTextes input[type="submit"]:hover {
+	color: #829ec5;
+}
+
+#champTextes input[type="submit"]:active {
+	color: #fff;
+	box-shadow:0 0 0px 0 #000;
+}
