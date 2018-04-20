@@ -5,15 +5,30 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Yanone+Kaffeesatz" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"> 
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 <body>  
+<header>
+   <div class="container-fluid">
+      <div class="row">
+        <div id="logo-header" class="column column-20"><a href="index.html"><img src="img/logo-wb.png" width="480"></a></div>
+        <div id="search" class="column column-30 mt mr"><input id="search" type="text" placeholder="Search.."></div>
+        <nav id="menu" class="column column-40 column-offset-30 txt-right">
+          <ul>
+            <li><a href="profile.html">Mon profil</a></li>
+            <li><a href="">Annuaire</a></li>
+            <li><a href="form.html">Formulaire</a></li>
+          <li><a href="">Déconnexion</a></li> </ul> 
+        </nav>
+      </div> 
+  </header> 
   <div class="container">
-    <h2>Create profile</h2>
+    <h2>Wilder, crée ton profil !!!</h2>
     <div id="champTextes">
       <form id="new_profile" action="index.html">
         <label>
-          Prenom :
+          Prénom :
           <input type="text" name="firstName" id="firstName">
         </label>
         <label>
@@ -53,10 +68,7 @@
           Mon côté wild :
           <input type="textarea" name="decriptionSentence" id="decriptionSentence"></textarea>
         </label>
-        <label>
-          Send:
-        <input type="submit" name="validate" value="Envoyer" class="champTextes">
-        </label>
+        <input type="submit" name="validate" value="Envoyer" class="champTextes"> 
       </form>
     </div>
   </div>
