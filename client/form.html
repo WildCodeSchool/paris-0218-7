@@ -3,67 +3,63 @@
 <head>
   <title>Formulaire</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Yanone+Kaffeesatz" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/form.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-
   <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"> 
-
+  <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
-<body>
-  
+<body>  
   <div class="container">
- <h2>Create profile</h2>
-  <div id="champTextes">
-  <form id="new_profile" action="index.html">
-    <label>
-      Prenom :
-      <input type="text" name="firstName" id="firstName">
-    </label>
-    <label>
-      Nom :
-      <input type="text" name="lastName" id="lastName">
-    </label>
-    <label>
-      Date de naissance :
-      <input type="date" name="birthDate" id="birthDate">
-    </label>
-    <label>
-      Campus :
-      <input type="text" name="campus" id="campus">
-    </label>
-    <label>
-      Session :
-      <input type="text" name="dateSession" id="dateSession">
-    </label>
-    <label>
-      Langage :
-      <input type="textarea" name="langue" id="langue"></textarea>
-    </label>
-    <label>
-      Passions :
-      <input type="textarea" name="passion" id="passion"></textarea>
-    </label>
-     <label>
-      Spécialisation :
-      <select name="spec" id="spec">
-        <option selected disabled>Choose</option>
-        <option value="js">JavaScript</option>
-        <option value="android">Android</option>
-        <option value="php">PHP</option>
-    </select>
-    </label>
-    <label>
-      Mon côté wild :
-      <input type="textarea" name="decriptionSentence" id="decriptionSentence"></textarea>
-    </label>
-    <label>
-      Send:
-    <input type="submit" name="validate" value="Envoyer" class="champTextes">
-    </label>
-  </form>
-</div>
-</div>
+    <h2>Create profile</h2>
+    <div id="champTextes">
+      <form id="new_profile" action="index.html">
+        <label>
+          Prenom :
+          <input type="text" name="firstName" id="firstName">
+        </label>
+        <label>
+          Nom :
+          <input type="text" name="lastName" id="lastName">
+        </label>
+        <label>
+          Date de naissance :
+          <input type="date" name="birthDate" id="birthDate">
+        </label>
+        <label>
+          Campus :
+          <input type="text" name="campus" id="campus">
+        </label>
+        <label>
+          Session :
+          <input type="text" name="dateSession" id="dateSession">
+        </label>
+        <label>
+          Langage :
+          <input type="textarea" name="langue" id="langue"></textarea>
+        </label>
+        <label>
+          Passions :
+          <input type="textarea" name="passion" id="passion"></textarea>
+        </label>
+         <label>
+          Spécialisation :
+          <select name="spec" id="spec">
+            <option selected disabled>Choose</option>
+            <option value="js">JavaScript</option>
+            <option value="android">Android</option>
+            <option value="php">PHP</option>
+        </select>
+        </label>
+        <label>
+          Mon côté wild :
+          <input type="textarea" name="decriptionSentence" id="decriptionSentence"></textarea>
+        </label>
+        <label>
+          Send:
+        <input type="submit" name="validate" value="Envoyer" class="champTextes">
+        </label>
+      </form>
+    </div>
+  </div>
   <script type="module" src="/js/form.js"></script>
-
 </body>
 </html> 
