@@ -12,7 +12,7 @@
 <body>
   
   <div class="container">
-  <!-- <h2>Create profile</h2> -->
+ <h2>Create profile</h2>
   <div id="champTextes">
   <form id="new_profile" action="index.html">
     <label>
@@ -45,7 +45,12 @@
     </label>
      <label>
       Spécialisation :
-      <input type="text" name="spec" id="spec">
+      <select name="spec" id="spec">
+        <option selected disabled>Choose</option>
+        <option value="js">JavaScript</option>
+        <option value="android">Android</option>
+        <option value="php">PHP</option>
+    </select>
     </label>
     <label>
       Mon côté wild :
