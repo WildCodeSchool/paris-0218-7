@@ -16,24 +16,6 @@ form.addEventListener('submit', event => {
   const formData = new FormData(event.target)
   console.log(formData)
 
-  // fetch('http://localhost:3248/form', {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     prenom,
-  //     nom,
-  //     phrase,
-  //     anniversaire,
-  //     ecole,
-  //     session,
-  //     specialization,
-  //     coteWild,
-  //     langage,
-  //     passions
-  //   })
-  // })
-  // .then(response => console.log(response.status))
-
-
    fetch('http://localhost:3248/image', {
     method: 'POST',
     body: formData,
@@ -52,20 +34,3 @@ form.addEventListener('submit', event => {
 
 
 
-// const image = document.getElementById('new_profile')
-// form.addEventListener('submit', event => {
-//   event.preventDefault()
-//   //const image = document.getElementById('myimage').value
-//   const formData = new FormData(form)
-//   console.log(formData)
-
-//   fetch('http://localhost:3248/image', {
-//     method: 'POST',
-//     body: formData,
-//     // headers: {
-//     //   'Accept': 'application/json',
-//     //   'Content-Type': 'multipart/form-data',
-//     //   'body': formData
-//     })
-//     .then(response => console.log(response.status))
-//   })

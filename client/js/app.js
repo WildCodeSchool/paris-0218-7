@@ -6,6 +6,7 @@ fetch('http://localhost:3248/alumnis')
     const alumnisElement = document.getElementById('block_alumnis')
     const alumniElements = personne.map(showAlumnis).join('')
     alumnisElement.innerHTML = alumniElements
+    console.log(alumniElements)
 
     const nbElement = document.getElementById('nb_alumni')
     nbElement.innerHTML = `

@@ -14,7 +14,7 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 
     nameElement.innerHTML = `
       <p class="name">${id.firstName} ${id.lastName}</p>
-      <img src="${id.img}" id="profile.picture">
+      <img src="http://localhost:3248/${id.img}" id="profile.picture">
       <p class="decriptionSentence">${id.decriptionSentence}</p>
     `
 
