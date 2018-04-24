@@ -19,16 +19,8 @@ form.addEventListener('submit', event => {
    fetch('http://localhost:3248/image', {
     method: 'POST',
     body: formData,
-
-    // headers: {
-    //   'Accept': 'application/json',
-    //   'Content-Type': 'multipart/form-data',
-    //   'body': formData
     })
     .then(response => console.log(response.status))
-  // console.log('Prenom', prenom)
-  // console.log('Nom', nom)
-  // console.log('phrase', phrase)
 })
 
 
