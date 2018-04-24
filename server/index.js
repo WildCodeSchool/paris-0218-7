@@ -2,6 +2,21 @@ const express = require('express')
 const fs = require('fs')
 const util = require('util')
 const path = require('path')
+const bodyParser = require('body-parser')
+const multer = require('multer')
+const upload = multer({
+  dest: 'uploads/',
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => cb(null, 'uploads/'),
+    filename: (req, file, cb) => cb(null, file.originalname)
+  }),
+  limits: { fileSize: 3000000 },
+  fileFilter: function (request, files, cb) {
+    // accept image only
+    if (files.mimetype !== 'image/jpeg') return cb(null, false)
+    cb(null, true)
+  }
+})
 
 const readFile = util.promisify(fs.readFile)
 const readdir = util.promisify(fs.readdir)
@@ -9,7 +24,8 @@ const writeFile = util.promisify(fs.writeFile)
 
 const app = express()
 
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('public'))
 
 app.use((request, response, next) => {
@@ -18,20 +34,21 @@ app.use((request, response, next) => {
   next()
 })
 
-
 // Middleware of "Add data with post"
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
+  console.log('content-type', request.headers['content-type'])
+  if (request.headers['content-type'].includes('multipart/form-data')) return next()
   let accumulator = ''
-  request.on('data', data =>{
+  request.on('data', data => {
     accumulator += data
   })
-  request.on('end', () =>{
-    try{
+  request.on('end', () => {
+    try {
       request.body = JSON.parse(accumulator)
       next()
     } catch (err) {
-    next(err)
+      next(err)
     }
   })
 })
@@ -40,33 +57,39 @@ app.get('/', (request, response) => {
   response.end('ok')
 })
 
-//Add data with post
-app.post('/form', (request, response, next) => {
+
+
+app.post('/image', upload.array('myimage'), (request, response, next) => {
+  // console.log(request.files)
+  if (!request.files) {
+    console.log('No file received')
+    return response.status(500).json({ success: false })
+  }
+  console.log('file received')
   const id = Math.random().toString(36).slice(2).padEnd(11, '0')
   const fileName = `alumni${id}.json`
   const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
   const content = {
     id: id,
-    firstName: request.body.prenom,
-    lastName: request.body.nom,
-    decriptionSentence: request.body.phrase,
-    birthDate: request.body.anniversaire,
-    campus: request.body.ecole,
-    dateSession: request.body.session,
-    langage: request.body.langage,
-    passions: request.body.passions,
-    specialization: request.body.specialization,
-    coteWild: request.body.decriptionSentence
+    firstName: request.body.firstName,
+    lastName: request.body.lastName,
+    decriptionSentence: request.body.decriptionSentence,
+    birthDate: request.body.birthDate,
+    campus: request.body.campus,
+    dateSession: request.body.dateSession,
+    langage: request.body.langue,
+    passions: request.body.passion,
+    specialization: request.body.spec,
     //createdAt: Date.now()
   }
-  writeFile(filePath, JSON.stringify(content), 'utf8')
-  .then(() => response.json('ok'))
-  .catch(next)
-  })
+  writeFile(filePath, JSON.stringify(content))
+    .then(() => response.json({ success: true }))
+    .catch(next)
+
+});
 
 //For display all alumnis on index.html with FS and promise
 app.get('/alumnis', (request, response, next) => {
-  console.log('sss')
   const alumniDirr = (path.join(__dirname, '../mocks/alumnis'))
   readdir(alumniDirr)
     .then(files => {
