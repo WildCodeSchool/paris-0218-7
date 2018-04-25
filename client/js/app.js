@@ -4,7 +4,6 @@ const renderAlumnis = alumnis => {
   const alumnisElement = document.getElementById('block_alumnis')
   const alumniElements = alumnis.map(showAlumnis).join('')
   alumnisElement.innerHTML = alumniElements
-  console.log(alumniElements)
 
   const nbElement = document.getElementById('nb_alumni')
   nbElement.innerHTML = `
@@ -17,10 +16,31 @@ fetch('http://localhost:3248/alumnis')
   .then(alumnis => {
     const input = document.getElementById('search')
 
-    input.addEventListener('input', event => {
-        const value = event.target.value
-        renderAlumnis(alumnis.filter(alumni => alumni.firstName.toLowerCase().includes(value)))
-    })
-
     renderAlumnis(alumnis)
+
+    input.addEventListener('input', event => {
+      const value = event.target.value.toLowerCase()
+        
+      const alumnisTab = [ 
+        "firstName",
+        "lastName",
+        "birthDate",
+        "campus",
+        "dateSession",
+        "specialization",
+        "language"
+      ]
+
+      const checkIfFound = (alumni) => {
+        for ( let i = 0 ; i < alumnisTab.length ; i++ ) {
+          if (alumni[alumnisTab[i]].toLowerCase().includes(value) === true) {
+            return true
+          }
+        }
+        return false
+      }
+      
+      renderAlumnis(alumnis.filter(p => checkIfFound(p)))
+    })
   })
+
