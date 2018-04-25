@@ -33,10 +33,12 @@ app.use((request, response, next) => {
   next()
 })
 
+
+
 // Middleware of "Add data with post"
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
-  console.log('content-type', request.headers['content-type'])
+  // console.log('content-type', request.headers['content-type'])
   if (request.headers['content-type'].includes('multipart/form-data')) return next()
   let accumulator = ''
   request.on('data', data => {
@@ -53,11 +55,56 @@ app.use((request, response, next) => {
 })
 
 app.get('/', (request, response) => {
-  response.end('ok')
+  response.end('Tu es a la racine')
 })
 
 
+//Registering a new member if it does not already exist
+app.post('/home', (request, response, next) => {
+  const usersDirr = (path.join(__dirname, '../mocks/users'))
+  readdir(usersDirr)
+    .then(files =>{
+      const filePaths = files.map(file => path.join(usersDirr, file))
+      const allFiles = filePaths
+      .filter(filepath => filepath.endsWith('.json'))
+      .map(filePath => {
+          return readFile(filePath, 'utf-8')
+        })
+      return Promise.all(allFiles)
+    })
+    .then(allFilesValues => {
+      const valueInJason = allFilesValues.map(JSON.parse)
+      // console.log(valueInJason)
+      const findUser = valueInJason.find(u => request.body.userEmail === u.userEmail)
+      if (findUser == undefined){
+        const contentusers = {
+          idUser: idUser,
+          userEmail: request.body.userEmail,
+          userPassword: request.body.userPassword,
+          //createdAt: Date.now()
+        }
+        // console.log(contentusers)
+        writeFile(filePathUsers, JSON.stringify(contentusers))
+        // .then(() => response.json({ success: true }))
+        .catch(next)
+        // console.log(request.method, request.url)
+        response.end('ok')
+      }
+      // console.log(findUser)
+      else {
+        response.send('Cet utilisateur exist déjà')
+        console.log('Cet utilisateur exist déjà')
+      }
+      // response.json(valueInJason)
+    })
+  const idUser = Math.random().toString(36).slice(2).padEnd(11, '0')
+  const fileNameUsers = (`user${idUser}.json`)
+  const filePathUsers = path.join(__dirname, '../mocks/users', fileNameUsers)
+  // console.log(filePathUsers)
+})
 
+
+//Upload image and creat profil
 app.post('/image', upload.array('myimage'), (request, response, next) => {
   // console.log(request.files)
   if (!request.files) {
