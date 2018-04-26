@@ -60,8 +60,58 @@ app.get('/', (request, response) => {
 
 
 // Registering a new user in users directory if it does not already exist
-app.post('/home', (request, response, next) => {
-  const usersDirr = (path.join(__dirname, '../mocks/users'))
+// app.post('/home', (request, response, next) => {
+//   const usersDirr = (path.join(__dirname, '../mocks/users'))
+//   readdir(usersDirr)
+//     .then(files =>{
+//       const filePaths = files.map(file => path.join(usersDirr, file))
+//       const allFiles = filePaths
+//       .filter(filepath => filepath.endsWith('.json'))
+//       .map(filePath => {
+//           return readFile(filePath, 'utf-8')
+//         })
+//       return Promise.all(allFiles)
+//     })
+//     .then(allFilesValues => {
+//       const valueInJason = allFilesValues.map(JSON.parse)
+//       // console.log(valueInJason)
+//       const findUser = valueInJason.find(u => request.body.userEmail === u.userEmail)
+//       if (findUser == undefined){
+//         const contentusers = {
+//           idUser: idUser,
+//           userEmail: request.body.userEmail,
+//           userPassword: request.body.userPassword,
+//           //createdAt: Date.now()
+//         }
+//         // console.log(contentusers)
+//         writeFile(filePathUsers, JSON.stringify(contentusers))
+//         // .then(() => response.json({ success: true }))
+//         .catch(next)
+//         // console.log(request.method, request.url)
+//         response.end('ok')
+//       }
+//       // console.log(findUser)
+//       else {
+//         response.send('Cet utilisateur exist déjà')
+//         console.log('Cet utilisateur exist déjà')
+//       }
+//       // response.json(valueInJason)
+//     })
+//   const idUser = Math.random().toString(36).slice(2).padEnd(11, '0')
+//   const fileNameUsers = (`user${idUser}.json`)
+//   const filePathUsers = path.join(__dirname, '../mocks/users', fileNameUsers)
+//   console.log(filePathUsers)
+// })
+
+
+//Creat user / Creat profil / Upload profil picture
+app.post('/image', upload.array('myimage'), (request, response, next) => {
+  // console.log(request.files)
+  // if (!request.files) {
+  //   console.log('No file received')
+  //   return response.status(500).json({ success: false })
+  // }
+  const usersDirr = (path.join(__dirname, '../mocks/alumnis'))
   readdir(usersDirr)
     .then(files =>{
       const filePaths = files.map(file => path.join(usersDirr, file))
@@ -76,97 +126,69 @@ app.post('/home', (request, response, next) => {
       const valueInJason = allFilesValues.map(JSON.parse)
       // console.log(valueInJason)
       const findUser = valueInJason.find(u => request.body.userEmail === u.userEmail)
-      if (findUser == undefined){
-        const contentusers = {
-          idUser: idUser,
-          userEmail: request.body.userEmail,
-          userPassword: request.body.userPassword,
-          //createdAt: Date.now()
-        }
-        // console.log(contentusers)
-        writeFile(filePathUsers, JSON.stringify(contentusers))
-        // .then(() => response.json({ success: true }))
-        .catch(next)
-        // console.log(request.method, request.url)
-        response.end('ok')
-      }
-      // console.log(findUser)
-      else {
+      if (findUser != undefined) {
         response.send('Cet utilisateur exist déjà')
         console.log('Cet utilisateur exist déjà')
       }
+      else if (findUser == undefined && request.files.length > 0){
+        console.log('file received')
+        console.log(request.files)
+        // console.log(request.files[0].path)
+        const imgName = `${request.files[0].path}`
+        const imgFilePath = path.join(imgName)
+        const img = imgFilePath
+        // console.log(imgFilePath)
+        const id = Math.random().toString(36).slice(2).padEnd(11, '0')
+        const fileName = `alumni${id}.json`
+        const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+
+        const content = {
+        id: id,
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        decriptionSentence: request.body.decriptionSentence,
+        birthDate: request.body.birthDate,
+        campus: request.body.campus,
+        dateSession: request.body.dateSession,
+        langage: request.body.langue,
+        passions: request.body.passion,
+        specialization: request.body.spec,
+        img: imgFilePath,
+    //createdAt: Date.now()
+      }
+      writeFile(filePath, JSON.stringify(content))
+        .then(() => response.json({ success: true }))
+        .catch(next)
+
       // response.json(valueInJason)
+    }
+
+      else{
+      // console.log(request.body)
+        const id = Math.random().toString(36).slice(2).padEnd(11, '0')
+        const fileName = `alumni${id}.json`
+        const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+
+        const content = {
+        id: id,
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        decriptionSentence: request.body.decriptionSentence,
+        birthDate: request.body.birthDate,
+        campus: request.body.campus,
+        dateSession: request.body.dateSession,
+        langage: request.body.langue,
+        passions: request.body.passion,
+        specialization: request.body.spec,
+        // img: imgFilePath,
+        //createdAt: Date.now()
+        }
+        writeFile(filePath, JSON.stringify(content))
+          .then(() => response.json({ success: true }))
+          .catch(next)
+      }
     })
-  const idUser = Math.random().toString(36).slice(2).padEnd(11, '0')
-  const fileNameUsers = (`user${idUser}.json`)
-  const filePathUsers = path.join(__dirname, '../mocks/users', fileNameUsers)
-  console.log(filePathUsers)
-})
-
-
-//Creat user / Creat profil / Upload profil picture
-app.post('/image', upload.array('myimage'), (request, response, next) => {
-  // console.log(request.files)
-  // if (!request.files) {
-  //   console.log('No file received')
-  //   return response.status(500).json({ success: false })
-  // }
-  if (request.files.length > 0){
-    console.log('file received')
-    console.log(request.files)
-    // console.log(request.files[0].path)
-    const imgName = `${request.files[0].path}`
-    const imgFilePath = path.join(imgName)
-    const img = imgFilePath
-    // console.log(imgFilePath)
-    const id = Math.random().toString(36).slice(2).padEnd(11, '0')
-    const fileName = `alumni${id}.json`
-    const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
-
-    const content = {
-    id: id,
-    firstName: request.body.firstName,
-    lastName: request.body.lastName,
-    decriptionSentence: request.body.decriptionSentence,
-    birthDate: request.body.birthDate,
-    campus: request.body.campus,
-    dateSession: request.body.dateSession,
-    langage: request.body.langue,
-    passions: request.body.passion,
-    specialization: request.body.spec,
-    img: imgFilePath,
-    //createdAt: Date.now()
-  }
-  writeFile(filePath, JSON.stringify(content))
-    .then(() => response.json({ success: true }))
-    .catch(next)
-    // response.end()
-  }
-  else{
-  // console.log(request.body)
-    const id = Math.random().toString(36).slice(2).padEnd(11, '0')
-    const fileName = `alumni${id}.json`
-    const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
-
-    const content = {
-    id: id,
-    firstName: request.body.firstName,
-    lastName: request.body.lastName,
-    decriptionSentence: request.body.decriptionSentence,
-    birthDate: request.body.birthDate,
-    campus: request.body.campus,
-    dateSession: request.body.dateSession,
-    langage: request.body.langue,
-    passions: request.body.passion,
-    specialization: request.body.spec,
-    // img: imgFilePath,
-    //createdAt: Date.now()
-  }
-  writeFile(filePath, JSON.stringify(content))
-    .then(() => response.json({ success: true }))
-    .catch(next)
-  }
-})
+  })
 
 //For display all alumnis on index.html with FS and promise
 app.get('/alumnis', (request, response, next) => {
