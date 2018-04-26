@@ -4,11 +4,11 @@
   <title>Formulaire</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Yanone+Kaffeesatz" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"> 
+  <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
-<body>  
+<body>
 <header>
    <div class="container-fluid">
       <div class="row">
@@ -19,14 +19,14 @@
             <li><a href="profile.html">Mon profil</a></li>
             <li><a href="">Annuaire</a></li>
             <li><a href="form.html">Formulaire</a></li>
-          <li><a href="">Déconnexion</a></li> </ul> 
+          <li><a href="">Déconnexion</a></li> </ul>
         </nav>
-      </div> 
-  </header> 
+      </div>
+  </header>
   <div class="container">
     <h2>Wilder, crée ton profil !!!</h2>
     <div id="champTextes">
-      <form id="new_profile" action="index.html">
+      <form id="new_profile" action="index.html" method="POST" enctype="multipart/form-data">
         <label>
           Prénom :
           <input type="text" name="firstName" id="firstName">
@@ -68,10 +68,13 @@
           Mon côté wild :
           <input type="textarea" name="decriptionSentence" id="decriptionSentence"></textarea>
         </label>
-        <input type="submit" name="validate" value="Envoyer" class="champTextes"> 
+        <label>
+          <input type="file" name="myimage" id="myimage" multiple>
+        </label>
+        <input type="submit" name="validate" value="Envoyer" class="champTextes">
       </form>
     </div>
   </div>
   <script type="module" src="/js/form.js"></script>
 </body>
-</html> 
+</html>

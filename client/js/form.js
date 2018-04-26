@@ -1,4 +1,7 @@
-document.getElementById('new_profile').addEventListener('submit', event => {
+const form = document.getElementById('new_profile')
+
+form.addEventListener('submit', event => {
+
   event.preventDefault()
   const prenom = document.getElementById('firstName').value
   const nom = document.getElementById('lastName').value
@@ -10,22 +13,16 @@ document.getElementById('new_profile').addEventListener('submit', event => {
   const coteWild = document.getElementById('decriptionSentence').value
   const langage = document.getElementById('langue').value
   const passions = document.getElementById('passion').value
-  fetch('http://localhost:3248/form', {
-    method: 'post',
-    body: JSON.stringify({
-      prenom,
-      nom,
-      phrase,
-      anniversaire,
-      ecole,
-      session,
-      specialization,
-      coteWild,
-      langage,
-      passions
+  const formData = new FormData(event.target)
+  console.log(formData)
+
+   fetch('http://localhost:3248/image', {
+    method: 'POST',
+    body: formData,
     })
-  }).then(response => console.log(response.status))
-  // console.log('Prenom', prenom)
-  // console.log('Nom', nom)
-  // console.log('phrase', phrase)
+    .then(response => console.log(response.status))
 })
+
+
+
+
