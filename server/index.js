@@ -59,7 +59,7 @@ app.get('/', (request, response) => {
 })
 
 
-//Registering a new member if it does not already exist
+// Registering a new user in users directory if it does not already exist
 app.post('/home', (request, response, next) => {
   const usersDirr = (path.join(__dirname, '../mocks/users'))
   readdir(usersDirr)
@@ -100,27 +100,30 @@ app.post('/home', (request, response, next) => {
   const idUser = Math.random().toString(36).slice(2).padEnd(11, '0')
   const fileNameUsers = (`user${idUser}.json`)
   const filePathUsers = path.join(__dirname, '../mocks/users', fileNameUsers)
-  // console.log(filePathUsers)
+  console.log(filePathUsers)
 })
 
 
-//Upload image and creat profil
+//Creat user / Creat profil / Upload profil picture
 app.post('/image', upload.array('myimage'), (request, response, next) => {
   // console.log(request.files)
-  if (!request.files) {
-    console.log('No file received')
-    return response.status(500).json({ success: false })
-  }
-  console.log('file received')
-  console.log(request.files[0].path)
-  // console.log(request.body)
-  const id = Math.random().toString(36).slice(2).padEnd(11, '0')
-  const fileName = `alumni${id}.json`
-  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
-  const imgName = `${request.files[0].path}`
-  const imgFilePath = path.join(imgName)
-  console.log(imgFilePath)
-  const content = {
+  // if (!request.files) {
+  //   console.log('No file received')
+  //   return response.status(500).json({ success: false })
+  // }
+  if (request.files.length > 0){
+    console.log('file received')
+    console.log(request.files)
+    // console.log(request.files[0].path)
+    const imgName = `${request.files[0].path}`
+    const imgFilePath = path.join(imgName)
+    const img = imgFilePath
+    // console.log(imgFilePath)
+    const id = Math.random().toString(36).slice(2).padEnd(11, '0')
+    const fileName = `alumni${id}.json`
+    const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+
+    const content = {
     id: id,
     firstName: request.body.firstName,
     lastName: request.body.lastName,
@@ -137,8 +140,33 @@ app.post('/image', upload.array('myimage'), (request, response, next) => {
   writeFile(filePath, JSON.stringify(content))
     .then(() => response.json({ success: true }))
     .catch(next)
+    // response.end()
+  }
+  else{
+  // console.log(request.body)
+    const id = Math.random().toString(36).slice(2).padEnd(11, '0')
+    const fileName = `alumni${id}.json`
+    const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
 
-});
+    const content = {
+    id: id,
+    firstName: request.body.firstName,
+    lastName: request.body.lastName,
+    decriptionSentence: request.body.decriptionSentence,
+    birthDate: request.body.birthDate,
+    campus: request.body.campus,
+    dateSession: request.body.dateSession,
+    langage: request.body.langue,
+    passions: request.body.passion,
+    specialization: request.body.spec,
+    // img: imgFilePath,
+    //createdAt: Date.now()
+  }
+  writeFile(filePath, JSON.stringify(content))
+    .then(() => response.json({ success: true }))
+    .catch(next)
+  }
+})
 
 //For display all alumnis on index.html with FS and promise
 app.get('/alumnis', (request, response, next) => {

@@ -36,6 +36,8 @@ body {
   text-align: center;
 }
 
+
+
 h3 {
   text-align: center;
   color:#666d72;
@@ -46,8 +48,6 @@ h3 {
 
 form {
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 65px;
   font-family: 'cooper black', sans-serif;
   font-size: 20px;
 }
