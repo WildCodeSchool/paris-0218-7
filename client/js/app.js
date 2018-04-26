@@ -1,14 +1,46 @@
 import { showAlumnis } from './components/showAlumni.js'
 
+const renderAlumnis = alumnis => {
+  const alumnisElement = document.getElementById('block_alumnis')
+  const alumniElements = alumnis.map(showAlumnis).join('')
+  alumnisElement.innerHTML = alumniElements
+
+  const nbElement = document.getElementById('nb_alumni')
+  nbElement.innerHTML = `
+    <p>${alumnis.length} membres correspondent à votre recherche</p>
+  `
+}
+
 fetch('http://localhost:3248/alumnis')
   .then(response => response.json())
-  .then(personne => {
-    const alumnisElement = document.getElementById('block_alumnis')
-    const alumniElements = personne.map(showAlumnis).join('')
-    alumnisElement.innerHTML = alumniElements
+  .then(alumnis => {
+    const input = document.getElementById('search')
 
-    const nbElement = document.getElementById('nb_alumni')
-    nbElement.innerHTML = `
-      <p>${personne.length} membres correspondent à votre recherche</p>
-    `
+    renderAlumnis(alumnis)
+
+    input.addEventListener('input', event => {
+      const value = event.target.value.toLowerCase()
+        
+      const alumnisTab = [ 
+        "firstName",
+        "lastName",
+        "campus",
+        "dateSession",
+        "specialization"
+      
+      ]
+
+      const checkIfFound = (alumni) => {
+        for ( let i = 0 ; i < alumnisTab.length ; i++ ) {
+          if (alumni[alumnisTab[i]].toLowerCase().includes(value) === true) {
+            return true
+          }
+        }
+        return false
+      }
+      
+      renderAlumnis(alumnis.filter(p => checkIfFound(p)))
+    })
   })
+  
+

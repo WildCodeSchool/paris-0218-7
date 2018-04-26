@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/WildCodeSchool/paris-0218-wild-book#readme",
   "dependencies": {
+    "multer": "^1.3.0",
     "nodemon": "^1.17.2",
     "serve": "^6.5.3"
   }
