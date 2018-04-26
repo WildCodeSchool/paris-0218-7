@@ -33,10 +33,12 @@ app.use((request, response, next) => {
   next()
 })
 
+
+
 // Middleware of "Add data with post"
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
-  console.log('content-type', request.headers['content-type'])
+  // console.log('content-type', request.headers['content-type'])
   if (request.headers['content-type'].includes('multipart/form-data')) return next()
   let accumulator = ''
   request.on('data', data => {
@@ -53,45 +55,69 @@ app.use((request, response, next) => {
 })
 
 app.get('/', (request, response) => {
-  response.end('ok')
+  response.end('Tu es a la racine')
 })
 
 
-
+//Creat user / Creat profil / Upload profil picture
 app.post('/image', upload.array('myimage'), (request, response, next) => {
   // console.log(request.files)
-  if (!request.files) {
-    console.log('No file received')
-    return response.status(500).json({ success: false })
-  }
-  console.log('file received')
-  console.log(request.files[0].path)
-  // console.log(request.body)
-  const id = Math.random().toString(36).slice(2).padEnd(11, '0')
-  const fileName = `alumni${id}.json`
-  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
-  const imgName = `${request.files[0].path}`
-  const imgFilePath = path.join(imgName)
-  console.log(imgFilePath)
-  const content = {
-    id: id,
-    firstName: request.body.firstName,
-    lastName: request.body.lastName,
-    decriptionSentence: request.body.decriptionSentence,
-    birthDate: request.body.birthDate,
-    campus: request.body.campus,
-    dateSession: request.body.dateSession,
-    langage: request.body.langue,
-    passions: request.body.passion,
-    specialization: request.body.spec,
-    img: imgFilePath,
-    //createdAt: Date.now()
-  }
-  writeFile(filePath, JSON.stringify(content))
-    .then(() => response.json({ success: true }))
-    .catch(next)
+  // if (!request.files) {
+  //   console.log('No file received')
+  //   return response.status(500).json({ success: false })
+  // }
+  const usersDirr = (path.join(__dirname, '../mocks/alumnis'))
+  readdir(usersDirr)
+    .then(files => {
+      const filePaths = files.map(file => path.join(usersDirr, file))
+      const allFiles = filePaths
+        .filter(filepath => filepath.endsWith('.json'))
+        .map(filePath => readFile(filePath, 'utf-8'))
+      return Promise.all(allFiles)
+    })
+    .then(allFilesValues => {
+      const valueInJson = allFilesValues.map(JSON.parse)
+      // console.log(valueInJson)
+      const findUser = valueInJson.find(u => request.body.userEmail === u.userEmail)
+      if (findUser) {
+        throw Error('Cet utilisateur exist déjà')
+      }
+      console.log('user found', findUser)
+      // console.log(request.body)
+      const id = Math.random().toString(36).slice(2).padEnd(11, '0')
+      const fileName = `alumni${id}.json`
+      const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
 
-});
+      const content = {
+        id: id,
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        userEmail: request.body.userEmail,
+        userPassword: request.body.userPassword,
+        decriptionSentence: request.body.decriptionSentence,
+        birthDate: request.body.birthDate,
+        campus: request.body.campus,
+        dateSession: request.body.dateSession,
+        langage: request.body.langue,
+        passions: request.body.passion,
+        specialization: request.body.spec
+        //createdAt: Date.now()
+      }
+
+      if (request.files.length > 0) {
+        console.log('file received')
+        console.log(request.files)
+        const imgName = `${request.files[0].path}`
+        const imgFilePath = path.join(imgName)
+        const img = imgFilePath
+        content.img = img
+      }
+
+      return writeFile(filePath, JSON.stringify(content))
+    })
+      .then(() => response.json({ success: true }))
+      .catch(next)
+  })
 
 //For display all alumnis on index.html with FS and promise
 app.get('/alumnis', (request, response, next) => {

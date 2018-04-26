@@ -20,8 +20,10 @@
 <body>
   <header>
     <div class="row">
-      <div class="column column-100">
+      <div class="column column-100 inscription">
         <img src="img/logo-wb.png" class="logo">
+        <h1>Inscris toi</h1>
+        <p>Si tu n'as pas déjà de compte....</p>
       </div>
     </div>
   </header>
@@ -30,24 +32,16 @@
   <div class= "container">
     <div class="row">
       <div class="column column-100">
-
-<!--formulaire de connexion page home-->
-          <form>
-            <h3> Connectes-toi Wilder !</h3>
-
-            <label for="nameField" class="block"></label>
-            <input placeholder="Ton email..." id="nameField" class="champs" type="text">
-            <label for="nameField" class="block"></label>
-            <input placeholder="Ton mot de passe" id="nameField" class="champs" type="text">
-
-            <a class="button" href="index.html">Connexion</a>
-            <a class="button" href="#">Inscris-toi Wilder ! </a>
-
-        </form>
-
-
+          <form id="new_user" action="home.html" method="POST" enctype="multipart/form-data">
+            <input type="email" placeholder="Ton email..." id="userEmail" name="userEmail" class="champs">
+            <input type="password" placeholder="Ton mot de passe" id="userPassword" name="userPassword" class="champs">
+            <input type="submit" value="Envoyer" name="validate" class="button" />
+          </form>
       </div>
     </div>
+  </div>
+
+  <script type="module" src="/js/formNewUser.js"></script>
 
 </body>
 
