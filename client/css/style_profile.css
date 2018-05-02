@@ -65,6 +65,6 @@
   margin-bottom: 30px;
 }
 
-.btn-modifier{
+.btn-modifier, .btn-supprimer {
   text-align: center;
 }
