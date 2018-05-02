@@ -1,5 +1,7 @@
 import { showAlumnis } from './components/showAlumni.js'
 
+let alumnis = []
+
 const handleErrors = res => {
   if (res.error) {
     throw Error(res.error)
@@ -19,8 +21,40 @@ const renderAlumnis = alumnis => {
   `
 }
 
-fetch('http://localhost:3248/alumnis', {'credentials': 'include'})
+fetch('http://localhost:3248/alumnis', { 'credentials': 'include' })
   .then(response => response.json())
   .then(handleErrors)
-  .then(renderAlumnis)
+  .then(fetchedAlumnis => {
+    alumnis = fetchedAlumnis
+    renderAlumnis(fetchedAlumnis)
+  })
   .catch(err => console.error(err))
+
+const searchBar = document.getElementById('search')
+
+searchBar.addEventListener('input', event => {
+  event.preventDefault()
+
+  const value = event.target.value.toLowerCase()
+
+  const keys = [
+    'firstName',
+    'lastName',
+    'campus',
+    'dateSession'
+  ]
+
+  const byKeys = alumni => {
+    for (const key of keys) {
+      if (alumni[key].toLowerCase().includes(value)) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  const filteredAlumnis = alumnis.filter(byKeys)
+
+  renderAlumnis(filteredAlumnis)
+})
