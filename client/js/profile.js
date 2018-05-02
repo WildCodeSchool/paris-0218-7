@@ -7,7 +7,7 @@ const calculateAge = birthday => { // birthday is a date
   return Math.abs(ageDate.getUTCFullYear() - 1970)
 }
 
-fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
+fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {'credentials': 'include'})
   .then(response => response.json())
   .then(id => {
     const nameElement = document.getElementById('block_starter')

@@ -11,36 +11,37 @@ const renderAlumnis = alumnis => {
   `
 }
 
-fetch('http://localhost:3248/alumnis')
+fetch('http://localhost:3248/alumnis', {'credentials': 'include'})
   .then(response => response.json())
-  .then(alumnis => {
-    const input = document.getElementById('search')
+  .then(response => {
+    // const input = document.getElementById('search')
 
-    renderAlumnis(alumnis)
+    renderAlumnis(response)
 
-    input.addEventListener('input', event => {
-      const value = event.target.value.toLowerCase()
-        
-      const alumnisTab = [ 
-        "firstName",
-        "lastName",
-        "campus",
-        "dateSession",
-        "specialization"
-      
-      ]
+    // input.addEventListener('input', event => {
 
-      const checkIfFound = (alumni) => {
-        for ( let i = 0 ; i < alumnisTab.length ; i++ ) {
-          if (alumni[alumnisTab[i]].toLowerCase().includes(value) === true) {
-            return true
-          }
-        }
-        return false
-      }
-      
-      renderAlumnis(alumnis.filter(p => checkIfFound(p)))
-    })
+    //   const value = event.target.value.toLowerCase()
+
+    //   const alumnisTab = [
+    //     "firstName",
+    //     "lastName",
+    //     "campus",
+    //     "dateSession",
+    //     "specialization"
+
+    //   ]
+
+    //   const checkIfFound = (alumni) => {
+    //     for ( let i = 0 ; i < alumnisTab.length ; i++ ) {
+    //       if (alumni[alumnisTab[i]].toLowerCase().includes(value) === true) {
+    //         return true
+    //       }
+    //     }
+    //     return false
+    //   }
+
+    //   renderAlumnis(alumnis.filter(p => checkIfFound(p)))
+    // })
   })
-  
+
 

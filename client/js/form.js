@@ -17,11 +17,14 @@ form.addEventListener('submit', event => {
   console.log(formData)
 
    fetch('http://localhost:3248/image', {
+    'credentials': 'include',
     method: 'POST',
     body: formData,
+
     })
     .then(response => console.log(response.status))
 })
+
 
 
 

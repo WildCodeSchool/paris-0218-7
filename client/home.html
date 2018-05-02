@@ -21,25 +21,46 @@
   <header>
     <div class="row">
       <div class="column column-100 inscription">
-        <img src="img/logo-wb.png" class="logo">
-        <h1>Inscris toi</h1>
-        <p>Si tu n'as pas déjà de compte....</p>
+        <!-- <img src="img/logo-wb.png" class="logo"> -->
+        <h1>Connect toi</h1>
       </div>
     </div>
+    <header>
+   <div class="container-fluid">
+      <div class="row">
+        <!-- <div id="logo-header" class="column column-20"><a href="index.html"><img src="img/logo-wb.png" width="480"></a></div> -->
+        <!-- <div id="search" class="column column-30 mt mr"><input id="search" type="text" placeholder="Search.."></div> -->
+        <nav id="menu" class="column column-40 column-offset-30 txt-right">
+          <ul>
+            <li><a href="profile.html">Mon profil</a></li>
+            <li><a href="index.html">annuaire</a></li>
+            <li><a href="form.html">Formulaire</a></li>
+          <li><a href="">Déconnexion</a></li> </ul>
+        </nav>
+      </div>
+  </header>
   </header>
 
+  <div id="auth"></div>
 
   <div class= "container">
     <div class="row">
       <div class="column column-100">
-          <form id="new_user" action="home.html" method="POST" enctype="multipart/form-data">
-            <input type="email" placeholder="Ton email..." id="userEmail" name="userEmail" class="champs">
-            <input type="password" placeholder="Ton mot de passe" id="userPassword" name="userPassword" class="champs">
-            <input type="submit" value="Envoyer" name="validate" class="button" />
+          <form id="sign-in-form" action="home.html" method="POST" enctype="multipart/form-data">
+            <input type="email" placeholder="Ton email..." id="userEmail" name="login" class="champs">
+            <input type="password" placeholder="Ton mot de passe" id="userPassword" name="password" class="champs">
+            <input type="submit" value="Connexion" name="validate" class="button" />
           </form>
+          <a href="form.html">Ou inscript toi.... si tu n'as pas de compte</a>
       </div>
     </div>
   </div>
+
+    <form id="sign-out-form" style="display: none">
+      <input type="submit" value="logout">
+    </form>
+
+    <div id="message" style="color: red"></div>
 
   <script type="module" src="/js/formNewUser.js"></script>
 

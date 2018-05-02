@@ -1,16 +1,56 @@
+const authElement = document.getElementById('auth')
+const messageElement = document.getElementById('message')
+const signInForm = document.getElementById('sign-in-form')
+const signOutForm = document.getElementById('sign-out-form')
 
-document.getElementById('new_user').addEventListener('submit', event => {
-  event.preventDefault()
-  const userEmail = document.getElementById('userEmail').value
-  const userPassword = document.getElementById('userPassword').value
-  const formData = new FormData(event.target)
-  console.log('Mail : ', userEmail)
-  console.log('Password : ', userPassword)
-  fetch('http://localhost:3248/home', {
-    method: 'POST',
-    body: JSON.stringify({
-      userEmail,
-      userPassword
-    })
-  }).then(response => console.log(response.status))
+const handleAuth = response => {
+  const login = response.firstName
+
+  authElement.innerHTML = login ? `Hi ${login}, tu es bien connecté` : 'Connecte toi'
+
+  signInForm.style.display = login ? 'none' : 'block'
+  signOutForm.style.display = login ? 'block' : 'none'
+
+  // handle errors
+  messageElement.innerHTML = response.error || ''
+}
+
+
+signInForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  const formData = new FormData(e.target)
+  const credentials = {
+    login: formData.get('login'),
+    password: formData.get('password')
+    // console.log(credentials)
+  }
+  console.log(credentials)
+  fetch('http://localhost:3248/sign-in', {
+    method: 'post',
+    // headers: {
+    //   'Content-Type': 'application/json',
+
+    // },
+    'credentials': 'include', // Always send user credentials (cookies, basic http auth, etc..), even for cross-origin calls.
+    body: JSON.stringify(credentials)
+  })
+  .then(res => res.json())
+  .then(handleAuth)
 })
+
+signOutForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  fetch('http://localhost:3248/sign-out', { 'credentials': 'include' })
+    .then(res => res.json())
+    .then(handleAuth)
+})
+
+
+fetch('http://localhost:3248/home', { 'credentials': 'include' })
+  .then(res => res.json())
+  .then(handleAuth)
+
+
+

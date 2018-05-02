@@ -4,7 +4,7 @@
   "description": "![alt text](photo/WildBook.png)",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server --ignore client",
+    "server": "nodemon server --ignore client --ignore server/sessions",
     "client": "serve client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
