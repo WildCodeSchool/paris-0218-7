@@ -24,31 +24,32 @@ const upload = multer({
 
 const secret = 'something unbelievable' //For sign_in sign_up
 
-const mustBeSignIn = (req, res, next) => {
-  if (!req.session.user || !req.session.user.email) {
-    return next(Error('Must be sign-in'))
+const app = express()
+
+// MIDDLEWARES
+
+// Authentication middleware (check if user is logged or not)
+const authRequired = (req, res, next) => {
+  if (!req.session.isLogged) {
+    return next(Error('Must be logged'))
   }
 
   next()
 }
 
-const app = express()
-
-// MIDDLEWARES
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin)
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.header('Access-Control-Allow-Methods', '*')
+  res.header('Access-Control-Allow-Credentials', 'true')
+  next()
+})
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.use('/images', express.static(publicImageFolderPath))
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin)
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  res.header('Access-Control-Allow-Credentials', 'true')
-  next()
-})
-
-//For sign_in sign_up
 app.use(session({
   secret,
   saveUninitialized: false,
@@ -56,7 +57,6 @@ app.use(session({
   store: new FileStore({ path: path.join(__dirname, 'sessions'), secret }),
 }))
 
-//For sign_in sign_up
 // Logger middleware
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
@@ -66,7 +66,11 @@ app.use((req, res, next) => {
 
 // ROUTES
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
+  res.end('coucou')
+})
+
+app.get('/whoami', (req, res) => {
   const user = req.session.user || {}
 
   res.json(user)
@@ -97,6 +101,7 @@ app.post('/sign-in', async (req, res, next) => {
 
   // add user to the session
   req.session.user = user
+  req.session.isLogged = true
 
   res.json(user)
   console.log(`User '${user.email}' connected`)
@@ -105,8 +110,8 @@ app.post('/sign-in', async (req, res, next) => {
 app.get('/sign-out', (req, res, next) => {
   console.log(`User '${req.session.user.email}' disconnected`)
   req.session.user = {}
+  req.session.isLogged = false
 
-  // req.session.destroy() // why ?
   res.json('ok')
 })
 
@@ -131,20 +136,49 @@ app.post('/sign-up', upload.single('myimage'), async (req, res, next) => {
     .catch(next)
 })
 
-//For display all alumnis on index.html with FS and promise
-app.get('/alumnis', mustBeSignIn, async (req, res, next) => {
+app.get('/alumnis', authRequired, (req, res, next) => {
   db.getUsers()
+    .then(users => users.filter(user => user.deleted !== true))
     .then(users => res.json(users))
     .catch(next)
 })
 
-//Find the ID for display the profile detail with read file and
-app.get('/alumnis/:id', async (req, res) => {
+app.get('/alumnis/:id', (req, res) => {
   const id = req.params.id
 
   db.getUserById(id)
+    .then(user => {
+      if (user.deleted) {
+        throw Error('Alumni not found')
+      }
+    })
     .then(user => res.json(user))
     .catch(() => res.status(404).end('Alumni not found'))
+})
+
+//Update profile
+app.put('/alumnis/:id', upload.single('avatar'), (req, res, next) => {
+  const id = req.params.id
+  const updates = req.body
+
+  if (req.file) {
+    updates.img = req.file.filename
+  }
+
+  console.log({id, updates})
+
+  db.updateUser(id, updates)
+    .then(() => res.json('ok'))
+    .catch(next)
+})
+
+//Delete Profile
+app.delete('/alumnis/:id', (req, res, next) => {
+  const id = req.params.id
+
+  db.deleteUser(id)
+    .then(() => res.json('ok'))
+    .catch(next)
 })
 
 
@@ -153,7 +187,7 @@ app.get('/alumnis/:id', async (req, res) => {
 app.use((err, req, res, next) => {
   if (err) {
     res.json({ error: err.message })
-    console.error('ERr:', err)
+    console.error(err)
   }
 })
 

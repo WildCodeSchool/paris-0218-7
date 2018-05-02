@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,7 @@
   <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/style_profile.css">
+  <link rel="stylesheet" type="text/css" href="css/modifier.css">
   <meta charset="utf-8">
   <title>WildBook</title>
 </head>
@@ -25,16 +27,51 @@
         </nav>
       </div>
   </header>
-  <div class="container test">
+
+<!-- Modal Modifier alumni -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modifier</h2>
+    </div>
+    <div class="modal-body">
+      <form id="update-form">
+        <label>
+          Mon côté wild :
+          <input type="text" id="descriptionSentence" name="descriptionSentence">
+        </label>
+        <label>
+          Passions :
+          <input type="text" id="passions" name="passions">
+        </label>
+        <label>
+          Avatar :
+          <input type="file" id="avatar" name="avatar">
+        </label>
+        <input id="send" type="submit"  name="validate" value="Envoyer" class="champTextes">
+      </form>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+</div><!-- FIN MODAL -->
+
+  <div id="container" class="container test">
     <div class="row">
-      <!-- To view the profile summary / top left -->
       <div id="block_starter" class="column column-40 block_starter"></div>
-      <!-- To view the profile détail / top right (Sentence description / age / language) -->
       <div id="block_details" class="column column-40 column-offset-10 block_details"></div>
     </div>
-       <div class="btn-modifier" id="btn-modifier"></div> <!-- button modifier -->
+    <div>
+      <button class="btn-modifier" id="btn-modifier">Modifier</button>
+      <button class="btn-desactiver" id="btn-supprimer">Supprimer</button>
+    </div>
 
   </div>
   <script type="module" src="/js/profile.js"></script>
+  <script type="module" src="/js/modal.js"></script>
 </body>
 </html>

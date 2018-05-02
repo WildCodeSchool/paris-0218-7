@@ -5,6 +5,7 @@ const path = require('path')
 const readFile = util.promisify(fs.readFile)
 const readdir = util.promisify(fs.readdir)
 const writeFile = util.promisify(fs.writeFile)
+const removeFile = util.promisify(fs.unlink)
 
 const dbpath = path.join(__dirname, 'db/alumnis')
 
@@ -32,8 +33,38 @@ const addUser = user => {
   return writeFile(filePath, JSON.stringify(user, null, 2), 'utf8')
 }
 
+const updateUser = async (id, updates) => {
+  const fileName = `alumni${id}.json`
+  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+
+  const user = await getUserById(id)
+
+  for (const key of Object.keys(updates)) {
+    if (updates[key] !== undefined) {
+      user[key] = updates[key]
+    }
+  }
+
+  return writeFile(filePath, JSON.stringify(user, null, 2), 'utf8')
+}
+
+const deleteUser = async id => {
+  const fileName = `alumni${id}.json`
+  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+
+  const user = await getUserById(id)
+
+  user.deleted = true
+
+  return writeFile(filePath, JSON.stringify(user, null, 2), 'utf8')
+
+  // return removeFile(filePath)
+}
+
 module.exports = {
   getUsers,
   getUserById,
   addUser,
+  updateUser,
+  deleteUser,
 }

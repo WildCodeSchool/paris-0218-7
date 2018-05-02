@@ -46,9 +46,6 @@ signOutForm.addEventListener('submit', e => {
 })
 
 
-fetch('http://localhost:3248/home', { 'credentials': 'include' })
+fetch('http://localhost:3248/whoami', { 'credentials': 'include' })
   .then(res => res.json())
   .then(handleAuth)
-
-
-
