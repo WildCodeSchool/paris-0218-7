@@ -63,18 +63,22 @@ app.post('/sign-up', upload.single('myimage'), async (request, response, next) =
     .catch(next)
 })
 
-//For display all alumnis on index.html with FS and promise
-app.get('/alumnis', async (request, response, next) => {
+app.get('/alumnis', (request, response, next) => {
   db.getUsers()
+    .then(users => users.filter(user => user.deleted !== true))
     .then(users => response.json(users))
     .catch(next)
 })
 
-//Find the ID for display the profile detail with read file and
-app.get('/alumnis/:id', async (request, response) => {
+app.get('/alumnis/:id', (request, response) => {
   const id = request.params.id
 
   db.getUserById(id)
+    .then(user => {
+      if (user.deleted) {
+        throw Error('Alumni not found')
+      }
+    })
     .then(user => response.json(user))
     .catch(() => response.status(404).end('Alumni not found'))
 })
@@ -94,4 +98,14 @@ app.put('/alumnis/:id', upload.single('avatar'), (request, response, next) => {
     .then(() => response.json('ok'))
     .catch(next)
 })
+
+//Delete Profile
+app.delete('/alumnis/:id', (request, response, next) => {
+  const id = request.params.id
+
+  db.deleteUser(id)
+    .then(() => response.json('ok'))
+    .catch(next)
+})
+
 app.listen(3248, () => console.log('J\'écoute sur le port 3248'))

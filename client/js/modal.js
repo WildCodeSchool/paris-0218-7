@@ -42,3 +42,20 @@ updateForm.addEventListener('submit', event => {
   })
 })
 
+
+const deleteButton = document.getElementById('btn-supprimer')
+
+deleteButton.addEventListener('click', event => {
+  event.preventDefault()
+
+  fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
+    method: 'DELETE'
+  })
+  .then(response => {
+    console.log(response.status)
+    window.location = window.location
+  })
+})
+
+
+
