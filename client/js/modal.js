@@ -1,3 +1,5 @@
+import { search } from './route.js'
+
 // Get the modal
 const modal = document.getElementById('myModal')
 
@@ -23,3 +25,20 @@ window.onclick = (event) => {
     modal.style.display = 'none'
   }
 }
+const updateForm = document.getElementById('update-form')
+
+updateForm.addEventListener('submit', event => {
+  event.preventDefault()
+
+  const formData = new FormData(event.target)
+
+  fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
+    method: 'PUT',
+    body: formData,
+  })
+  .then(response => {
+    console.log(response.status)
+    window.location = window.location
+  })
+})
+

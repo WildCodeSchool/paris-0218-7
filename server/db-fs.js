@@ -34,8 +34,23 @@ const addUser = user => {
   return writeFile(filePath, JSON.stringify(user, null, 2), 'utf8')
 }
 
+const updateUser = async (id, updates) => {
+  const fileName = `alumni${id}.json`
+  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+
+  const user = await getUserById(id)
+
+  for (const key of Object.keys(updates)) {
+    if (updates[key] !== undefined) {
+      user[key] = updates[key]
+    }
+  }
+
+  return writeFile(filePath, JSON.stringify(user, null, 2), 'utf8')
+}
 module.exports = {
   getUsers,
   getUserById,
   addUser,
+  updateUser,
 }

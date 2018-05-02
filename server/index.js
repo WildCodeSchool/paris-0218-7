@@ -31,7 +31,8 @@ app.use('/images', express.static(publicImageFolderPath))
 
 app.use((request, response, next) => {
   response.header('Access-Control-Allow-Origin', '*')
-  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  response.header('Access-Control-Allow-Methods', '*')
+  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
   next()
 })
 
@@ -78,4 +79,19 @@ app.get('/alumnis/:id', async (request, response) => {
     .catch(() => response.status(404).end('Alumni not found'))
 })
 
+//Update profile
+app.put('/alumnis/:id', upload.single('avatar'), (request, response, next) => {
+  const id = request.params.id
+  const updates = request.body
+
+  if (request.file) {
+    updates.img = request.file.filename
+  }
+
+  console.log({id, updates})
+
+  db.updateUser(id, updates)
+    .then(() => response.json('ok'))
+    .catch(next)
+})
 app.listen(3248, () => console.log('J\'écoute sur le port 3248'))
