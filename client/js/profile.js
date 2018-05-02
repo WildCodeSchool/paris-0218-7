@@ -8,8 +8,10 @@ const calculateAge = birthday => { // birthday is a date
 }
 
 fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
+
   .then(response => response.json())
   .then(id => {
+
     const nameElement = document.getElementById('block_starter')
 
     nameElement.innerHTML = `
@@ -20,7 +22,6 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 
     const birth = new Date(id.birthDate)
     const detailsElement = document.getElementById('block_details')
-    const btnModifier = document.getElementById('btn-modifier')
 
     detailsElement.innerHTML = `
       <p class="spe">Spécialisation : ${id.specialization}</p>
@@ -30,11 +31,10 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`)
 
       <p class= "langue">Langues: ${id.langage}</p>
       <p class="hobby">Mes passions : ${id.passions}</p>
-
     `
-    btnModifier.innerHTML = `<a href="#">Modifier</a>` //boutton modifier en page profile
   })
   .catch(err => {
     const errorElement = document.getElementById('block_starter')
     errorElement.innerHTML = `Ce membre n'existe pas`
   })
+

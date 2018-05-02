@@ -25,6 +25,19 @@ window.onclick = (event) => {
     modal.style.display = 'none'
   }
 }
+
+// Autocomplete demo
+
+// const user = {
+//   firstName: 'yoyo',
+//   descriptionSentence: 'mon cote wild..',
+//   passions: 'football'
+// }
+
+// for (const key of Object.keys(user)) {
+//   document.getElementById(key).value = user[key]
+// }
+
 const updateForm = document.getElementById('update-form')
 
 updateForm.addEventListener('submit', event => {
