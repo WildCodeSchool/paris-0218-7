@@ -1,0 +1,13 @@
+{
+	"id": 5,
+	"firstName" : "Joffrey",
+	"lastName" : "Chauleau",
+	"birthDate" : "1968/07/14",
+	"campus" : "Paris",
+	"img": "antoine.jpg",
+	"dateSession": "Février 2016",
+	"specialization": "React",
+	"decriptionSentence": "Mon coté Wild: je peux soulever 130kg d'un bras",
+	"language": "Arabe, latin",
+	"passions": "Jeux vidéo"
+}

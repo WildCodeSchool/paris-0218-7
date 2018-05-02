@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "firstName" : "Edouard",
+  "lastName" : "de Laage",
+  "birthDate" : "1979/11/29",
+  "campus" : "Bordeaux",
+  "img": "edouard.jpg",
+  "dateSession": "Février 2017",
+  "specialization": "Ruby",
+  "decriptionSentence": "Mon coté Wild: Je sais piloter des avions de chasse",
+  "language": "Anglais, tibétain",
+  "passions": "Informatique"
+}

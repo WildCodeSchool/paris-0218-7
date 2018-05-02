@@ -23,15 +23,13 @@ signInForm.addEventListener('submit', e => {
   const credentials = {
     login: formData.get('login'),
     password: formData.get('password')
-    // console.log(credentials)
   }
-  console.log(credentials)
+
   fetch('http://localhost:3248/sign-in', {
     method: 'post',
-    // headers: {
-    //   'Content-Type': 'application/json',
-
-    // },
+    headers: {
+      'Content-Type': 'application/json',
+    },
     'credentials': 'include', // Always send user credentials (cookies, basic http auth, etc..), even for cross-origin calls.
     body: JSON.stringify(credentials)
   })

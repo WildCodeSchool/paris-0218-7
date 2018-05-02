@@ -1,5 +1,13 @@
 import { showAlumnis } from './components/showAlumni.js'
 
+const handleErrors = res => {
+  if (res.error) {
+    throw Error(res.error)
+  }
+
+  return res
+}
+
 const renderAlumnis = alumnis => {
   const alumnisElement = document.getElementById('block_alumnis')
   const alumniElements = alumnis.map(showAlumnis).join('')
@@ -13,35 +21,6 @@ const renderAlumnis = alumnis => {
 
 fetch('http://localhost:3248/alumnis', {'credentials': 'include'})
   .then(response => response.json())
-  .then(response => {
-    // const input = document.getElementById('search')
-
-    renderAlumnis(response)
-
-    // input.addEventListener('input', event => {
-
-    //   const value = event.target.value.toLowerCase()
-
-    //   const alumnisTab = [
-    //     "firstName",
-    //     "lastName",
-    //     "campus",
-    //     "dateSession",
-    //     "specialization"
-
-    //   ]
-
-    //   const checkIfFound = (alumni) => {
-    //     for ( let i = 0 ; i < alumnisTab.length ; i++ ) {
-    //       if (alumni[alumnisTab[i]].toLowerCase().includes(value) === true) {
-    //         return true
-    //       }
-    //     }
-    //     return false
-    //   }
-
-    //   renderAlumnis(alumnis.filter(p => checkIfFound(p)))
-    // })
-  })
-
-
+  .then(handleErrors)
+  .then(renderAlumnis)
+  .catch(err => console.error(err))
