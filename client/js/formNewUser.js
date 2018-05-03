@@ -34,6 +34,10 @@ signInForm.addEventListener('submit', e => {
     body: JSON.stringify(credentials)
   })
   .then(res => res.json())
+
+  .then(response => {
+    window.location = 'http://localhost:5000/index.html'
+  })
   .then(handleAuth)
 })
 

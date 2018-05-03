@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
 
 app.get('/whoami', (req, res) => {
   const user = req.session.user || {}
-
+  console.log(user)
   res.json(user)
 })
 
@@ -143,7 +143,7 @@ app.get('/alumnis', authRequired, (req, res, next) => {
     .catch(next)
 })
 
-app.get('/alumnis/:id', (req, res) => {
+app.get('/alumnis/:id', authRequired, (req, res) => {
   const id = req.params.id
 
   db.getUserById(id)
@@ -151,7 +151,7 @@ app.get('/alumnis/:id', (req, res) => {
       if (user.deleted) {
         throw Error('Alumni not found')
       }
-    
+
       return user
     })
     .then(user => res.json(user))

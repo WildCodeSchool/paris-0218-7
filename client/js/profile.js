@@ -1,4 +1,31 @@
 import { search } from './route.js'
+const signOutForm = document.getElementById('sign-out-form')
+const authElement = document.getElementById('auth')
+const messageElement = document.getElementById('message')
+
+const handleAuth = response => {
+  const login = response.firstName
+
+  authElement.innerHTML = login ? `Hi ${login}, tu es bien connecté` : 'tu viens de te deconnecter'
+
+  // signInForm.style.display = login ? 'none' : 'block'
+  signOutForm.style.display = login ? 'block' : 'none'
+
+  // handle errors
+  messageElement.innerHTML = response.error || ''
+}
+
+const handleErrors = res => {
+  if (res.error) {
+    const nbElement = document.getElementById('nb_alumni')
+    nbElement.innerHTML = `
+    <p style "color: red;">Vous devez être connécter pour avoir accé au membres</p>
+  `
+    throw Error(res.error)
+  }
+
+  return res
+}
 
 const calculateAge = birthday => { // birthday is a date
   const ageDifMs = Date.now() - birthday.getTime()
@@ -41,4 +68,14 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
     errorElement.innerHTML = `Ce membre n'existe pas`
     console.log(err)
   })
+
+signOutForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  fetch('http://localhost:3248/sign-out', { 'credentials': 'include' })
+    .then(res => res.json())
+    .then(handleAuth)
+    .catch(err => console.error(err))
+      window.location = window.location
+})
 
