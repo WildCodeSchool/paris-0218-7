@@ -40,7 +40,7 @@ const authRequired = (req, res, next) => {
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', req.headers.origin)
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  res.header('Access-Control-Allow-Methods', '*')
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, OPTIONS, DELETE')
   res.header('Access-Control-Allow-Credentials', 'true')
   next()
 })
@@ -59,7 +59,10 @@ app.use(session({
 
 // Logger middleware
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
+  const user = req.session.user
+  const isLogged = req.session.isLogged
+
+  console.log(`${req.method} ${req.url}`, { isLogged, as: user ? user.email : 'none' })
   next()
 })
 
@@ -72,7 +75,7 @@ app.get('/', (req, res) => {
 
 app.get('/whoami', (req, res) => {
   const user = req.session.user || {}
-
+  console.log(user)
   res.json(user)
 })
 
@@ -143,7 +146,7 @@ app.get('/alumnis', authRequired, (req, res, next) => {
     .catch(next)
 })
 
-app.get('/alumnis/:id', (req, res) => {
+app.get('/alumnis/:id', authRequired, (req, res) => {
   const id = req.params.id
 
   db.getUserById(id)
@@ -151,7 +154,7 @@ app.get('/alumnis/:id', (req, res) => {
       if (user.deleted) {
         throw Error('Alumni not found')
       }
-    
+
       return user
     })
     .then(user => res.json(user))

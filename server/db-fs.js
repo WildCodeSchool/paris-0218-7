@@ -35,7 +35,7 @@ const addUser = user => {
 
 const updateUser = async (id, updates) => {
   const fileName = `alumni${id}.json`
-  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+  const filePath = path.join(dbpath, fileName)
 
   const user = await getUserById(id)
 
@@ -50,7 +50,7 @@ const updateUser = async (id, updates) => {
 
 const deleteUser = async id => {
   const fileName = `alumni${id}.json`
-  const filePath = path.join(__dirname, '../mocks/alumnis', fileName)
+  const filePath = path.join(dbpath, fileName)
 
   const user = await getUserById(id)
 
