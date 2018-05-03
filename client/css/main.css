@@ -1,0 +1,151 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/************************RESET*****************************/
+/*html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}*/
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+a{
+  cursor: pointer;
+  text-decoration: none;
+
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/************************FIN RESET*****************************/
+html{
+  font-size: 62.5%;
+}
+p{
+  font-size: 14px;
+  font-size: 1.rem;
+}
+
+.main{
+  display:flex;
+  justify-content: center;
+}
+
+.h1-titre{
+  margin-top: 5%;
+  background-color: transparent;
+  font-family: 'Lato' , sans-serif;
+}
+/*.center{
+  width: 1200px;
+  margin:auto;
+}*/
+
+/************************NAVIGATION*****************************/
+
+.menu{
+  line-height:100px;
+  /*margin-right:50px;*/
+  padding-right: 20px;
+  left:60%;
+}
+
+nav{
+  text-align:right;
+  line-height:80px;
+  width:100%;
+  background-color: #52839d;
+  background-color: rgba(82, 131, 157, 0.7)
+}
+
+#toggle{
+  display:none;
+}
+.logo{
+  float:left;
+  line-height:70px;
+  margin-left:50px;
+  color: #f4f4f4;
+  margin-top: 4.0rem;
+  z-index: -9999;
+}
+label{
+  font-size:26px;
+  margin-right:50px;
+  display:none;
+  color:#f4f4f4;
+}
+.menu a{
+  text-decoration:none;
+  color: #f4f4f4;
+  margin-left:30px;
+  text-transform:capitalize;
+  font-family: 'Lato', sans-serif;
+  font-size: 2.0rem;
+}
+a:hover{
+  color:#EECB55;
+}
+
+.alumni img {
+  width: 20rem;
+}
+
+@media only screen and (max-width:768px)
+{
+  label {
+    display:block;
+  }
+  .menu a{
+    display:block;
+    text-align:center;
+    margin:auto;
+    border-bottom:2px solid #fff;
+  }
+  .menu{
+    margin:auto;
+    display:none;
+  }
+  #toggle:checked + .menu{
+    display:block;
+  }
+  .logo{
+    display: none;
+  }
+}
+

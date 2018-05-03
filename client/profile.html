@@ -2,33 +2,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
   <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/style_profile.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/profile.css">
   <link rel="stylesheet" type="text/css" href="css/modifier.css">
   <meta charset="utf-8">
   <title>WildBook</title>
 </head>
 <body>
+
   <header>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- <div id="logo-header" class="column column-20"><a href="index.html"><img src="img/logo-wb.png" width="480"></a></div> -->
-        <div id="search" class="column column-30 mt mr"><input id="search" type="text" placeholder="Search.."></div>
-        <nav id="menu" class="column column-40 column-offset-30 txt-right">
-          <ul>
-            <li><a href="form.html">Formulaire</a></li>
-            <li><a href="">Déconnexion</a></li> </ul>
-            <li><a href="home.html">Home</a></li> </ul>
-            <li><a href="index.html">annuaire</a></li>
-            <form id="sign-out-form">
-              <input type="submit" value="logout">
-            </form>
-          </ul>
-        </nav>
+    <nav>
+      <div class="logo"><a href="home.html"><img src="img/logo-golden.png" width="141" alt="logo"></a></div>
+      <div class="menu">
+        <input type="text" id="search" style="display: none">
+        <a href="index.html">MEMBRES</a>
+        <a href="sign-up.html">INSCRIPTION</a>
+        <a href="#" id="sign-out-form">DECONNEXION</a>
       </div>
+    </nav>
   </header>
 
 <!-- Modal Modifier alumni -->
