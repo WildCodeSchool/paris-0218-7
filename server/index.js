@@ -151,6 +151,8 @@ app.get('/alumnis/:id', (req, res) => {
       if (user.deleted) {
         throw Error('Alumni not found')
       }
+    
+      return user
     })
     .then(user => res.json(user))
     .catch(() => res.status(404).end('Alumni not found'))
