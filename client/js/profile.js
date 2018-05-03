@@ -7,7 +7,11 @@ const calculateAge = birthday => { // birthday is a date
   return Math.abs(ageDate.getUTCFullYear() - 1970)
 }
 
-fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {'credentials': 'include'})
+fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
+  'credentials': 'include',
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  })
   .then(response => response.json())
   .then(id => {
 
@@ -15,7 +19,7 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {'credentials': 'incl
 
     nameElement.innerHTML = `
       <p class="name">${id.firstName} ${id.lastName}</p>
-      <img src="http://localhost:3248/${id.img}" id="profile.picture">
+      <img src="http://localhost:3248/images/${id.img}" id="profile.picture">
       <p class="decriptionSentence">${id.decriptionSentence}</p>
     `
 
@@ -35,5 +39,6 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {'credentials': 'incl
   .catch(err => {
     const errorElement = document.getElementById('block_starter')
     errorElement.innerHTML = `Ce membre n'existe pas`
+    console.log(err)
   })
 
