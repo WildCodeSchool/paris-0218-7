@@ -45,9 +45,15 @@ updateForm.addEventListener('submit', event => {
 
   const formData = new FormData(event.target)
 
+  // fetch('http://localhost:3248/whoami', { 'credentials': 'include', })
   fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
     method: 'PUT',
     body: formData,
+    'credentials': 'include'
+    // body: JSON.stringify(formData),
+    // headers: {
+    //   'accept': 'application/json, text/plain, */*',
+    //   'Content-Type': 'application/json'}
   })
   .then(response => {
     console.log(response.status)

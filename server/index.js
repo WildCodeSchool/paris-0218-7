@@ -40,7 +40,7 @@ const authRequired = (req, res, next) => {
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', req.headers.origin)
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  res.header('Access-Control-Allow-Methods', '*')
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, OPTIONS, DELETE')
   res.header('Access-Control-Allow-Credentials', 'true')
   next()
 })
@@ -59,7 +59,10 @@ app.use(session({
 
 // Logger middleware
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
+  const user = req.session.user
+  const isLogged = req.session.isLogged
+
+  console.log(`${req.method} ${req.url}`, { isLogged, as: user ? user.email : 'none' })
   next()
 })
 
