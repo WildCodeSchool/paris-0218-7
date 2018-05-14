@@ -81,22 +81,8 @@
 	background-repeat: no-repeat;
 }
 
-/*#email{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
-	background-size: 30px 30px;
-	background-position: 11px 8px;
-	background-repeat: no-repeat;
-}
-
-#email:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
-	background-size: 30px 30px;
-  background-position: 11px 8px;
-	background-repeat: no-repeat;
-}*/
 
 #comment{
-	background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
@@ -131,7 +117,6 @@ input:focus, textarea:focus {
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
   margin-top:-4px;
-  /*font-weight:700;*/
 }
 
 #button-blue:hover{

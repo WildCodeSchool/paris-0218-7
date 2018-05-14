@@ -1,0 +1,16 @@
+{
+  "email": "test@langue.com",
+  "password": "test",
+  "firstName": "test langue",
+  "lastName": "test langue",
+  "birthDate": "1980-05-02",
+  "campus": "Paris",
+  "dateSession": "2018",
+  "langue": "test langue",
+  "passion": "lo que sea",
+  "decriptionSentence": "lo que sea",
+  "spec": "php",
+  "id": "4arklreiego",
+  "createdAt": 1525431310536,
+  "img": "default.jpg"
+}

@@ -1,0 +1,16 @@
+{
+  "email": "marie@test.com",
+  "password": "test",
+  "firstName": "Marie",
+  "lastName": "Coucou",
+  "birthDate": "1985-01-18",
+  "campus": "Lyon",
+  "dateSession": "2017",
+  "langue": "anglais",
+  "passion": "",
+  "decriptionSentence": "",
+  "spec": "android",
+  "id": "9y69i4viyfj",
+  "createdAt": 1525442692012,
+  "img": "default.jpg"
+}

@@ -4,9 +4,13 @@
 <head>
   <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/profile.css">
-  <link rel="stylesheet" type="text/css" href="css/modifier.css">
+  <link rel="stylesheet" type="text/css" href="css/modal.css">
   <meta charset="utf-8">
   <title>WildBook</title>
 </head>
@@ -15,6 +19,8 @@
   <header>
     <nav>
       <div class="logo"><a href="home.html"><img src="img/logo-golden.png" width="141" alt="logo"></a></div>
+      <label for="toggle">&#9776;</label>
+      <input type="checkbox" id="toggle">
       <div class="menu">
         <input type="text" id="search" style="display: none">
         <a href="index.html">MEMBRES</a>
@@ -35,19 +41,21 @@
     </div>
     <div class="modal-body">
       <form id="update-form">
-        <label>
+        <p id="field">
           Mon côté wild :
-          <input type="text" id="descriptionSentence" name="descriptionSentence">
-        </label>
-        <label>
+          <input type="text" id="decriptionSentence" name="decriptionSentence">
+        </p>
+        <p>
           Passions :
-          <input type="text" id="passions" name="passions">
-        </label>
-        <label>
+          <input type="text" id="passion" name="passion">
+        </p>
+        <p>
           Avatar :
           <input type="file" id="avatar" name="avatar">
-        </label>
+        </p>
+        <p class="envoyer-bouton">
         <input id="send" type="submit"  name="validate" value="Envoyer" class="champTextes">
+      </p>
       </form>
     </div>
     <div class="modal-footer">
@@ -56,16 +64,22 @@
 
 </div><!-- FIN MODAL -->
 
-  <div id="container" class="container test">
-    <div class="row">
-      <div id="block_starter" class="column column-40 block_starter"></div>
-      <div id="block_details" class="column column-40 column-offset-10 block_details"></div>
-    </div>
-    <div>
-      <button class="btn-modifier" id="btn-modifier">Modifier</button>
-      <button class="btn-desactiver" id="btn-supprimer">Supprimer</button>
+<div class="center-container">
+  <div id="container" class="main-container">
+
+    <div id="block_starter" class="block_starter"></div>
+    <div id="block_details" class="block_details"></div>
+     <div class="buttons">
+      <button class="btn-modifier action-button animate yellow" id="btn-modifier">Modifier</button>
+      <button class="btn-desactiver action-button animate yellow" id="btn-supprimer">Supprimer</button>
     </div>
 
+</div>
+<footer>
+      <a href="https://twitter.com/minimalmonkey" class="icon-button twitter"><i class="fab fa-twitter icon-twitter"></i><span></span></a>
+      <a href="https://facebook.com" class="icon-button facebook"><i class="fab fa-facebook-f icon-facebook"></i><span></span></a>
+      <a href="https://plus.google.com" class="icon-button google-plus"><i class="fab fa-google icon-google-plus"></i><span></span></a>
+    </footer>
   </div>
   <script type="module" src="/js/profile.js"></script>
   <script type="module" src="/js/modal.js"></script>

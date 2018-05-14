@@ -1,0 +1,17 @@
+{
+  "email": "sichelle.chiffert@gmail.com",
+  "password": "test",
+  "firstName": "sichelle",
+  "lastName": "chiffert",
+  "birthDate": "1985-02-10",
+  "campus": "Paris",
+  "dateSession": "2018",
+  "langue": "Espagnol",
+  "passion": "les chouquettes",
+  "decriptionSentence": "rien",
+  "spec": "js",
+  "id": "5qp8mg12v5f",
+  "createdAt": 1525442543770,
+  "img": "IMG_6299.JPG",
+  "deleted": true
+}

@@ -1,79 +1,81 @@
-/*.block_starter {
+.block_starter {
   text-align: center;
-  margin-top: 50px;
-  background-color: white;
+  margin-top: 200px;
+  /*background-color: blue;*/
   opacity:0.8;
-  border-radius: 18px;
-  width: 1000px;
+  border-radius: 12px;
+  width: 50%;
+  margin:auto;
+  /*float: left;*/
+  /*padding: 1%;*/
+  color: blue;
+
 }
 
-#logo {
-  width: 40%;
-  height:40%;
-  margin-left: -8px;
-  margin-top: -5px;
+#block_starter img {
+  max-width: 250px;
+  margin-left: 15px;
+  margin-bottom: 30px;
+  border-radius: 50%;
 }
 
 .name {
-  font-size: 2em;
+  font-size: 2.4rem;
   margin-left:15px;
+  /*background-color: #52839d;*/
+  /*background-color: white;*/
+  color: #52839d;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+
 }
 
 .block_details {
   margin-top: 50px;
-  background-color: white;
+  /*background-color: #52839d;
+  background-color: rgba(82, 131, 157, 0.7);*/
   opacity: 0.8;
+  /*float: left;*/
+  width: 50%;
+  margin:auto;
+  text-transform: capitalize;
+  border-radius:8px;
+  color: red;
 }
 
-.test {
-  margin-top: 100px;
-  background-color: white;
-  opacity:0.9;
-  width:50%;
-  border-radius: 18px;
-  padding-bottom: 15px;
+
+#block_details, .birthday, .langue, .decriptionSentence, .session, .spe ,.hobby {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.4rem;
+  margin-top: 8px;
+  color: #52839d;
+
 }
 
 .decriptionSentence {
   text-align: center;
-}
-
-#block_details, .birthday, .langue #hobby {
-  text-align: center;
-  font-weight: bold;
-}
-
-#block_details .spe {
-  font-size: 25px;
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-#block_details .session, .decriptionSentence {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-#block_details.decriptionSentence {
-  font-weight: bold;
-  font-size: 15px;
-}
-
-#block_starter img {
-    max-width: 250px;
-  margin-left: 15px;
-  margin-bottom: 30px;
+  text-transform: uppercase;
+  color: #52839d;
 }
 
 .btn-modifier, .btn-supprimer {
   text-align: center;
+  float: left;
 }
-*/
 
 .main-container{
-display:flex;
-justify-content: center;
+background-color:rgba(238, 203, 85 ,0.6);
+padding: 20px;
+border-radius: 12px;
+margin-top: 12%;
+width: 50%;
+margin:auto;
 
+}
+.center-container{
+  margin-top: 6%;
+  border-radius: 12px;
 }
 
 #block_alumnis {
@@ -81,9 +83,8 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 margin-left: 100px;
-margin-top: 100px;
+margin-top: 150px;
 margin-right:100px;
-
 }
 
 .liste_alumnis {
@@ -93,7 +94,7 @@ width: 300px;
 padding-top: 5px;
 padding-bottom: 5px;
 margin-bottom: 20px;
-border-radius: 150px;
+/*border-radius: 150px;*/
 }
 
 #nb_alumni {
@@ -135,3 +136,41 @@ color: black;
 border-radius: 18px;
 
 }
+
+
+/*******************PROFILE DETAILS*************************/
+.buttons{
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  text-align: center;
+  margin: auto;
+}
+.yellow{
+  background-color: #F2CF66;
+  border-bottom: 5px solid #D1B358;
+  /*text-shadow: 0px -2px #D1B358;*/
+}
+.animate{
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+.action-button{
+  position: relative;
+  padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  float: left;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  color: #FFF;
+  text-decoration: none;
+}
+.action-button:active {
+  transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  border-bottom: 1px solid;
+}
+
+
+

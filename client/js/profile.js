@@ -39,13 +39,13 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
     const detailsElement = document.getElementById('block_details')
 
     detailsElement.innerHTML = `
-      <p class="spe">Spécialisation : ${id.specialization}</p>
+      <p class="spe">Spécialisation : ${id.spec}</p>
       <p class= "session">Session : ${id.campus} / ${id.dateSession}</p>
 
-      <p id="birthday">Age : ${calculateAge(birth)} ans</p>
+      <p class="birthday" id="birthday">Age : ${calculateAge(birth)} ans</p>
 
-      <p class= "langue">Langues: ${id.langage}</p>
-      <p class="hobby">Mes passions : ${id.passions}</p>
+      <p class= "langue">Langues: ${id.langue}</p>
+      <p class="hobby">Mes passions : ${id.passion}</p>
     `
   })
   .catch(err => {

@@ -13,6 +13,7 @@ const handleAuth = user => {
     return
   }
 
+  authElement.innerHTML = login ? `Salut ${login}, tu es bien connecté !!` : 'tu viens de te deconnecter'
   // signOutButton.innerHTML = login ? `${login}<a href="#" id="sign-out-form">DECONNEXION</a>` : '<a href="home.html">CONNEXION</a>'
 
   // signOutButton.style.display = login ? '' : 'none'
@@ -38,7 +39,7 @@ const renderAlumnis = alumnis => {
 
   const nbElement = document.getElementById('nb_alumni')
   nbElement.innerHTML = `
-    <p>${alumnis.length} membres correspondent à votre recherche</p>
+    <p class="soustitre">${alumnis.length} membres correspondent à votre recherche</p>
   `
 }
 
