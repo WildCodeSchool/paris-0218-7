@@ -4,17 +4,17 @@ const signInForm = document.getElementById('sign-in-form')
 const signOutForm = document.getElementById('sign-out-form')
 
 const handleAuth = response => {
+  console.log(response)
   const login = response.firstName
 
-  authElement.innerHTML = login ? `Hi ${login}, tu es bien connecté` : 'Connecte toi'
-
-  signInForm.style.display = login ? 'none' : 'block'
-  signOutForm.style.display = login ? 'block' : 'none'
+  if (login) {
+    window.location = 'http://localhost:5000/index.html'
+    return
+  }
 
   // handle errors
   messageElement.innerHTML = response.error || ''
 }
-
 
 signInForm.addEventListener('submit', e => {
   e.preventDefault()
@@ -34,21 +34,8 @@ signInForm.addEventListener('submit', e => {
     body: JSON.stringify(credentials)
   })
   .then(res => res.json())
-
-  .then(response => {
-    window.location = 'http://localhost:5000/index.html'
-  })
   .then(handleAuth)
 })
-
-signOutForm.addEventListener('submit', e => {
-  e.preventDefault()
-
-  fetch('http://localhost:3248/sign-out', { 'credentials': 'include' })
-    .then(res => res.json())
-    .then(handleAuth)
-})
-
 
 fetch('http://localhost:3248/whoami', { 'credentials': 'include' })
   .then(res => res.json())

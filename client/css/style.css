@@ -97,9 +97,6 @@ body{
 
 /*NAV-BAR*/
 
-#logo-header{
-  margin-left: -50px;
-}
 
 header{
   background-color: white;
@@ -110,7 +107,7 @@ header{
 #menu {
   font-family: 'Roboto', sans-serif;
   padding-top: 1%;
-  margin-right:-100px;
+ /* margin-right:-100px;*/
 }
 
 #menu ul li {

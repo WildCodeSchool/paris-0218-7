@@ -1,0 +1,17 @@
+{
+  "email": "test3@test3.test",
+  "password": "test3",
+  "firstName": "test3",
+  "lastName": "test3",
+  "birthDate": "2007-05-11",
+  "campus": "test3",
+  "dateSession": "test3",
+  "langue": "test3",
+  "passion": "test3",
+  "decriptionSentence": "test3",
+  "spec": "android",
+  "id": "boyw3g573vn",
+  "createdAt": 1525367855411,
+  "img": "default.jpg",
+  "deleted": true
+}

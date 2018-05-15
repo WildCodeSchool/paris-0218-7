@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Formulaire</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Yanone+Kaffeesatz" rel="stylesheet">
+  <title>Sign up</title>
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 <body>
 <header>
-   <div class="container-fluid">
-      <div class="row">
-        <!-- <div id="logo-header" class="column column-20"><a href="index.html"><img src="img/logo-wb.png" width="480"></a></div> -->
-        <div id="search" class="column column-30 mt mr"><input id="search" type="text" placeholder="Search.."></div>
-        <nav id="menu" class="column column-40 column-offset-30 txt-right">
-          <ul>
-            <li><a href="form.html">Formulaire</a></li>
-            <li><a href="">Déconnexion</a></li> </ul>
-            <li><a href="home.html">Home</a></li> </ul>
-            <li><a href="index.html">annuaire</a></li>
-        </nav>
+
+    <nav>
+       <div class="logo"><a href="home.html"><img src="img/logo-golden.png" width="141" alt="logo"></a></div>
+      <label for="toggle">&#9776;</label>
+      <input type="checkbox" id="toggle">
+      <div class="menu">
+        <a href="index.html">MEMBRES</a>
+        <a href="sign-up.html">INSCRIPTION</a>
+        <a href="#">DECONNEXION</a>
       </div>
+    </nav>
+
   </header>
 
   <form id="sign-out-form" style="display: none">
@@ -30,64 +28,70 @@
 
 
   <div class="container">
-    <h2>Wilder, crée ton profil !!!</h2>
-    <div id="champTextes">
-      <form id="sign-up-form">
-        <label>
-          Mail :
-          <input type="email" id="email" name="email" class="champs">
-        </label>
-        <label>
-          Mot de passe :
-          <input type="password" id="password" name="password" class="champs">
-        </label>
-        <label>
-          Prénom :
-          <input type="text" name="firstName" id="firstName">
-        </label>
-        <label>
-          Nom :
-          <input type="text" name="lastName" id="lastName">
-        </label>
-        <label>
-          Date de naissance :
-          <input type="date" name="birthDate" id="birthDate">
-        </label>
-        <label>
-          Campus :
-          <input type="text" name="campus" id="campus">
-        </label>
-        <label>
-          Session :
-          <input type="text" name="dateSession" id="dateSession">
-        </label>
-        <label>
-          Langage :
-          <input type="textarea" name="langue" id="langue"></textarea>
-        </label>
-        <label>
-          Passions :
-          <input type="textarea" name="passion" id="passion"></textarea>
-        </label>
-         <label>
-          Spécialisation :
-          <select name="spec" id="spec">
-            <option selected disabled>Choose</option>
+
+<div id="form-main">
+ <div id="form-div">
+     <p class="sign-up-title">Wilder, crée ton profil !!!</p>
+    <form class="form" id="sign-up-form">
+
+      <p class="field">
+        <input name="email" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="e-mail" id="email" required/>
+      </p>
+
+      <p class="field">
+        <input name="password" type="password" class="validate[required,custom[email]] feedback-input" id="password" placeholder="mot de passe" required/>
+      </p>
+
+      <p class="field">
+        <input name="firstName" type="text" class="validate[required,custom[email]] feedback-input" id="firstName" placeholder="prénom" required />
+      </p>
+
+      <p class="field">
+        <input name="lastName" type="text" class="validate[required,custom[email]] feedback-input" id="lastName" placeholder="nom" required />
+      </p>
+
+      <p class="field">
+        <input name="birthDate" type="date" class="validate[required,custom[email]] feedback-input" id="birthDate" required />
+      </p>
+
+      <p class="field">
+        <input name="campus" type="text" class="validate[required,custom[email]] feedback-input" id="campus" placeholder="campus" required/>
+      </p>
+
+      <p class="field">
+        <input name="dateSession" type="text" class="validate[required,custom[email]] feedback-input" id="dateSession" placeholder="promotion" required />
+      </p>
+
+      <p class="field">
+        <input name="langue" type="text" class="validate[required,custom[email]] feedback-input" id="langue" placeholder="langues parlées" required/>
+      </p>
+
+       <p class="field">
+        <input name="passion" type="text" class="validate[required,custom[email]] feedback-input" id="passion" placeholder="intérêts" />
+      </p>
+
+
+      <p class="field">
+        <input name="decriptionSentence" type="text" class="validate[required,custom[email]] feedback-input" id="decriptionSentence" placeholder="mon côte wild" />
+      </p>
+
+<p class="field"><select name="spec" id="spec">
+            <option selected disabled>langage</option>
             <option value="js">JavaScript</option>
             <option value="android">Android</option>
             <option value="php">PHP</option>
-        </select>
-        </label>
-        <label>
-          Mon côté wild :
-          <input type="textarea" name="decriptionSentence" id="decriptionSentence"></textarea>
-        </label>
-        <label>
-          <input type="file" name="myimage" id="myimage" multiple>
-        </label>
-        <input type="submit" name="validate" value="Envoyer" class="champTextes">
-      </form>
-    </div>
+        </select></p>
+
+<p class="field mb" >
+        <input name="myimage" type="file" class="validate[required,custom[email]] feedback-input" id="myimage"  multiple/>
+      </p>
+
+      <div class="submit">
+        <input type="submit" value="envoyer" id="button-blue"/ name="validate">
+        <div class="ease"></div>
+      </div>
+    </form>
+</div>
   </div>
   <script type="module" src="js/sign-up.js"></script>
 </body>

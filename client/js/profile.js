@@ -1,30 +1,15 @@
 import { search } from './route.js'
-const signOutForm = document.getElementById('sign-out-form')
+const signOutButton = document.getElementById('sign-out-form')
 const authElement = document.getElementById('auth')
 const messageElement = document.getElementById('message')
 
-const handleAuth = response => {
-  const login = response.firstName
+const handleAuth = user => {
+  const login = user.firstName
 
-  authElement.innerHTML = login ? `Hi ${login}, tu es bien connecté` : 'tu viens de te deconnecter'
-
-  // signInForm.style.display = login ? 'none' : 'block'
-  signOutForm.style.display = login ? 'block' : 'none'
-
-  // handle errors
-  messageElement.innerHTML = response.error || ''
-}
-
-const handleErrors = res => {
-  if (res.error) {
-    const nbElement = document.getElementById('nb_alumni')
-    nbElement.innerHTML = `
-    <p style "color: red;">Vous devez être connécter pour avoir accé au membres</p>
-  `
-    throw Error(res.error)
+  if (!login) {
+    window.location = 'http://localhost:5000/home.html'
+    return
   }
-
-  return res
 }
 
 const calculateAge = birthday => { // birthday is a date
@@ -54,13 +39,13 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
     const detailsElement = document.getElementById('block_details')
 
     detailsElement.innerHTML = `
-      <p class="spe">Spécialisation : ${id.specialization}</p>
+      <p class="spe">Spécialisation : ${id.spec}</p>
       <p class= "session">Session : ${id.campus} / ${id.dateSession}</p>
 
-      <p id="birthday">Age : ${calculateAge(birth)} ans</p>
+      <p class="birthday" id="birthday">Age : ${calculateAge(birth)} ans</p>
 
-      <p class= "langue">Langues: ${id.langage}</p>
-      <p class="hobby">Mes passions : ${id.passions}</p>
+      <p class= "langue">Langues: ${id.langue}</p>
+      <p class="hobby">Mes passions : ${id.passion}</p>
     `
   })
   .catch(err => {
@@ -69,13 +54,13 @@ fetch(`http://localhost:3248/alumnis/${search.get('id')}`, {
     console.log(err)
   })
 
-signOutForm.addEventListener('submit', e => {
+signOutButton.addEventListener('click', e => {
   e.preventDefault()
 
   fetch('http://localhost:3248/sign-out', { 'credentials': 'include' })
     .then(res => res.json())
     .then(handleAuth)
     .catch(err => console.error(err))
-      window.location = window.location
+
 })
 

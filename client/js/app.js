@@ -1,35 +1,36 @@
+
 import { showAlumnis } from './components/showAlumni.js'
-const signOutForm = document.getElementById('sign-out-form')
+const signOutButton = document.getElementById('sign-out-form')
 const authElement = document.getElementById('auth')
 const messageElement = document.getElementById('message')
 let alumnis = []
 
-const handleAuth = (user) => {
-  console.log(user)
+const handleAuth = user => {
   const login = user.firstName
 
-  authElement.innerHTML = login ? `Hi ${login}, tu es bien connecté` : 'tu viens de te deconnecter'
-
-  // signInForm.style.display = login ? 'none' : 'block'
-  signOutForm.style.display = login ? 'block' : 'none'
-
-  // handle errors
-  messageElement.innerHTML = user.error || ''
-}
-
-const handleErrors = res => {
-  if (res.error) {
-    const nbElement = document.getElementById('nb_alumni')
-    nbElement.innerHTML = `
-    <p style "color: red;">Vous devez être connécter pour avoir accé au membres</p>
-    <p><a href="home.html">Connexions</a> ou créer un <a href="sign-up.html">compte</a></p>
-  `
-    signOutForm.style.display = login ? 'none' : 'block'
-    throw Error(res.error)
+  if (!login) {
+    window.location = 'http://localhost:5000/home.html'
+    return
   }
 
-  return res
+  authElement.innerHTML = login ? `Salut ${login}, tu es bien connecté !!` : 'tu viens de te deconnecter'
+  // signOutButton.innerHTML = login ? `${login}<a href="#" id="sign-out-form">DECONNEXION</a>` : '<a href="home.html">CONNEXION</a>'
+
+  // signOutButton.style.display = login ? '' : 'none'
 }
+
+// const handleErrors = res => {
+//   if (res.error) {
+//     const nbElement = document.getElementById('nb_alumni')
+//     nbElement.innerHTML = `
+//       <p style "color: red;">Vous devez être connecté pour avoir accés aux membres</p>
+//       <p><a href="home.html">Connexions</a> ou créer un <a href="sign-up.html">compte</a></p>
+//     `
+//     throw Error(res.error)
+//   }
+
+//   return res
+// }
 
 const renderAlumnis = alumnis => {
   const alumnisElement = document.getElementById('block_alumnis')
@@ -38,19 +39,13 @@ const renderAlumnis = alumnis => {
 
   const nbElement = document.getElementById('nb_alumni')
   nbElement.innerHTML = `
-    <p>${alumnis.length} membres correspondent à votre recherche</p>
+    <p class="soustitre">${alumnis.length} membres correspondent à votre recherche</p>
   `
 }
 
-fetch('http://localhost:3248/whoami', { 'credentials': 'include', })
-  .then(res => res.json())
-  .then(user => handleAuth(user))
-
-
-
 fetch('http://localhost:3248/alumnis', { 'credentials': 'include', })
   .then(response => response.json())
-  .then(handleErrors)
+  // .then(handleErrors)
   .then(fetchedAlumnis => {
     alumnis = fetchedAlumnis
     renderAlumnis(fetchedAlumnis)
@@ -86,12 +81,18 @@ searchBar.addEventListener('input', event => {
   renderAlumnis(filteredAlumnis)
 })
 
-signOutForm.addEventListener('submit', e => {
+signOutButton.addEventListener('click', e => {
   e.preventDefault()
 
   fetch('http://localhost:3248/sign-out', { 'credentials': 'include' })
     .then(res => res.json())
     .then(handleAuth)
     .catch(err => console.error(err))
-      window.location = window.location
+
 })
+
+fetch('http://localhost:3248/whoami', { 'credentials': 'include', })
+  .then(res => res.json())
+  .then(handleAuth)
+
+
