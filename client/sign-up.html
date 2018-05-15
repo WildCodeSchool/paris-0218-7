@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign up</title>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/form.css">
+</head>
+<body>
+<header>
+
+    <nav>
+       <div class="logo"><a href="home.html"><img src="img/logo-golden.png" width="141" alt="logo"></a></div>
+      <label for="toggle">&#9776;</label>
+      <input type="checkbox" id="toggle">
+      <div class="menu">
+        <a href="index.html">MEMBRES</a>
+        <a href="sign-up.html">INSCRIPTION</a>
+        <a href="#">DECONNEXION</a>
+      </div>
+    </nav>
+
+  </header>
+
+  <form id="sign-out-form" style="display: none">
+      <input type="submit" value="logout">
+    </form>
+
+
+  <div class="container">
+
+<div id="form-main">
+ <div id="form-div">
+     <p class="sign-up-title">Wilder, crée ton profil !!!</p>
+    <form class="form" id="sign-up-form">
+
+      <p class="field">
+        <input name="email" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="e-mail" id="email" required/>
+      </p>
+
+      <p class="field">
+        <input name="password" type="password" class="validate[required,custom[email]] feedback-input" id="password" placeholder="mot de passe" required/>
+      </p>
+
+      <p class="field">
+        <input name="firstName" type="text" class="validate[required,custom[email]] feedback-input" id="firstName" placeholder="prénom" required />
+      </p>
+
+      <p class="field">
+        <input name="lastName" type="text" class="validate[required,custom[email]] feedback-input" id="lastName" placeholder="nom" required />
+      </p>
+
+      <p class="field">
+        <input name="birthDate" type="date" class="validate[required,custom[email]] feedback-input" id="birthDate" required />
+      </p>
+
+      <p class="field">
+        <input name="campus" type="text" class="validate[required,custom[email]] feedback-input" id="campus" placeholder="campus" required/>
+      </p>
+
+      <p class="field">
+        <input name="dateSession" type="text" class="validate[required,custom[email]] feedback-input" id="dateSession" placeholder="promotion" required />
+      </p>
+
+      <p class="field">
+        <input name="langue" type="text" class="validate[required,custom[email]] feedback-input" id="langue" placeholder="langues parlées" required/>
+      </p>
+
+       <p class="field">
+        <input name="passion" type="text" class="validate[required,custom[email]] feedback-input" id="passion" placeholder="intérêts" />
+      </p>
+
+
+      <p class="field">
+        <input name="decriptionSentence" type="text" class="validate[required,custom[email]] feedback-input" id="decriptionSentence" placeholder="mon côte wild" />
+      </p>
+
+<p class="field"><select name="spec" id="spec">
+            <option selected disabled>langage</option>
+            <option value="js">JavaScript</option>
+            <option value="android">Android</option>
+            <option value="php">PHP</option>
+        </select></p>
+
+<p class="field mb" >
+        <input name="myimage" type="file" class="validate[required,custom[email]] feedback-input" id="myimage"  multiple/>
+      </p>
+
+      <div class="submit">
+        <input type="submit" value="envoyer" id="button-blue"/ name="validate">
+        <div class="ease"></div>
+      </div>
+    </form>
+</div>
+  </div>
+  <script type="module" src="js/sign-up.js"></script>
+</body>
+</html>

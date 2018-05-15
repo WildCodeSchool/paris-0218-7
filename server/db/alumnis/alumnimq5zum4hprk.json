@@ -1,0 +1,16 @@
+{
+  "email": "test8@test.test",
+  "password": "test",
+  "firstName": "Fred",
+  "lastName": "Paquet",
+  "birthDate": "1978-01-12",
+  "campus": "Paris",
+  "dateSession": "2017",
+  "langue": "anglais",
+  "passion": "test passion",
+  "decriptionSentence": "coucou",
+  "spec": "js",
+  "id": "mq5zum4hprk",
+  "createdAt": 1525436680495,
+  "img": "default.jpg"
+}

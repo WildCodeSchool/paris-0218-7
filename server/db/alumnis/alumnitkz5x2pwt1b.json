@@ -1,0 +1,18 @@
+{
+  "email": "test60@test.com",
+  "password": "test",
+  "firstName": "Francesca",
+  "lastName": "Garcia",
+  "birthDate": "1975-01-18",
+  "campus": "Paris",
+  "dateSession": "2016",
+  "langue": "ANGLAIS",
+  "passion": "coucou",
+  "decriptionSentence": "pouet",
+  "spec": "android",
+  "id": "tkz5x2pwt1b",
+  "createdAt": 1525431944470,
+  "img": "20-strange-and-beautiful-trees-from-across-the-world.jpg",
+  "passions": "couocu2",
+  "deleted": true
+}

@@ -1,0 +1,16 @@
+{
+  "email": "test langue",
+  "password": "test",
+  "firstName": "test langue",
+  "lastName": "test langue",
+  "birthDate": "1980-05-02",
+  "campus": "Paris",
+  "dateSession": "2018",
+  "langue": "test langue",
+  "passion": "lo que sea",
+  "decriptionSentence": "lo que sea",
+  "spec": "php",
+  "id": "xpflh445c2l",
+  "createdAt": 1525431253014,
+  "img": "default.jpg"
+}
